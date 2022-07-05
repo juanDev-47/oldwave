@@ -3,19 +3,17 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { ThemeProvider } from "@mui/material";
+import { Button, ThemeProvider, Typography } from "@mui/material";
 // @ts-ignore
 import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
+import filterIcon from "../assets/icons/icon-filter@2x.png";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: "20px",
+  backgroundColor: "#FFFFFF",
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
@@ -46,7 +44,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
       "&:focus": {
         width: "20ch",
       },
@@ -54,9 +51,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const StyledIconSearch = styled(SearchIcon)(({ theme }) => ({
+  color: "#772CE8",
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+}));
+
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   color: "inherit",
-  backgroundColor: '#772CE8',
+  backgroundColor: "#772CE8",
+}));
+
+const StyledButtonVar = styled(Button)(({ theme }) => ({
+  color: "#FFFFFF",
+  backgroundColor: "#772CE8",
+  borderRadius: "20px",
+  border: "1px solid #ffffff",
+  margin: "0px 10px",
+  padding: "5px 30px",
 }));
 
 export default function Header() {
@@ -65,32 +77,25 @@ export default function Header() {
       <Box sx={{ flexGrow: 1 }}>
         <StyledAppBar position="static">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
+            <Box sx={{ flexGrow: 1 }}>
+              <Search>
+                <SearchIconWrapper>
+                  <StyledIconSearch />
+                </SearchIconWrapper>
+                <StyledInputBase inputProps={{ "aria-label": "search" }} />
+              </Search>
+            </Box>
+            <StyledButtonVar
+              variant="contained"
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              Buscar
+            </StyledButtonVar>
+            <StyledButtonVar
+              variant="contained"
             >
-              MUI
-            </Typography>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
+              <img src={filterIcon} className="h-4 mr-1" alt="oldwaveFilter" />
+              <Typography variant="body1" sx={{ marginLeft: '5px'}}>Filtros</Typography>
+            </StyledButtonVar>
           </Toolbar>
         </StyledAppBar>
       </Box>
