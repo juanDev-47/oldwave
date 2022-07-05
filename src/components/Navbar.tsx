@@ -9,11 +9,22 @@ import { Button, ThemeProvider } from "@mui/material";
 // @ts-ignore
 import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
 import oldWaveLogo from "../assets/logo/oldwave-logo-horizontal.png";
+import login2x from "../assets/icons/login-icon@2x.png";
 
 
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: '#FFFFFF',
+  color: 'red',
+}));
+
+const StyledButtonBar = styled(Button)(({ theme }) => ({
+  backgroundColor: '#F4F6FA',
+  hover: {
+    backgroundColor: '#F4F6FA',
+  },
+  borderRadius: '20px',
+  padding: '8px 30px', 
   color: '#000000',
 }));
 
@@ -34,22 +45,17 @@ export default function SearchAppBar() {
             <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
           </IconButton>
           <div className="flex-grow"></div>
-          <Button color="inherit">Login</Button>
+          <StyledButtonBar color="inherit">Registrate o inicia sesión</StyledButtonBar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <img src={login2x} className="h-6 mx-4" alt="oldWave" />
+          </IconButton>
         </Toolbar>
-          <Toolbar className="flex" >
-            <IconButton
-              size="small"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-              className="m-"
-            >
-              <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
-            </IconButton>
-            <Button color="inherit">Home</Button>
-            
-          </Toolbar>
         </StyledAppBar>
       </Box>
     </ThemeProvider>

@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import '../assets/fonts/Poppins-SemiBold.ttf';
 import '../assets/fonts/Poppins-Regular.ttf';
 
 export const oldwaveTheme = createTheme({
@@ -9,8 +10,8 @@ export const oldwaveTheme = createTheme({
     },
     typography: {
         fontFamily: [
+          'Poppins-SemiBold',
           'Poppins-Regular',
-          'Poppins-Black',
         ].join(','),
       },
   });
