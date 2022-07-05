@@ -4,6 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from '@mui/icons-material/Menu';
 // import Typography from "@mui/material/Typography";
 import { Button, ThemeProvider } from "@mui/material";
 // @ts-ignore
@@ -34,6 +35,17 @@ export default function Navbar() {
       <Box sx={{ flexGrow: 1 }}>
         <StyledAppBar position="static">
           <Toolbar>
+            <Box sx={{ display: { md: 'none', xs: 'block' } }}>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
             <IconButton
               size="large"
               edge="start"
@@ -44,9 +56,11 @@ export default function Navbar() {
               <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
             </IconButton>
             <div className="flex-grow"></div>
-            <StyledButtonBar color="inherit">
-              Registrate o inicia sesión
-            </StyledButtonBar>
+            <Box sx={{ display: { md: 'block', xs: 'none' } }}>
+              <StyledButtonBar color="inherit">
+                Registrate o inicia sesión
+              </StyledButtonBar>
+            </Box>
             <IconButton
               size="large"
               edge="start"

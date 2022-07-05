@@ -1,4 +1,4 @@
-import {Grid} from '@mui/material';
+import {Box, Grid} from '@mui/material';
 // @ts-ignore
 import Header from './components/Header.tsx';
 // @ts-ignore
@@ -16,7 +16,9 @@ function App() {
         >
           <Grid item xs={12} display={'block'} > 
             <Navbar />
-            <Header />
+            <Box  sx={{ display: { md: 'block', xs: 'none' } }}>
+              <Header />  
+            </Box>
           </Grid>
         </Grid>
   );
