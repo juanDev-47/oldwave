@@ -1,29 +1,23 @@
-import {Box, Grid} from '@mui/material';
+import { Grid } from "@mui/material";
 // @ts-ignore
-import Header from './components/Header.tsx';
+import Carousel from "./components/Carousel.tsx";
 // @ts-ignore
-import Navbar from './components/Navbar.tsx';
-
-
-
-
+import Header from "./components/Header.tsx";
+// @ts-ignore
+import Navbar from "./components/Navbar.tsx";
+// @ts-ignore
+import Carousel2 from "./components/Carousel2.tsx";
 
 function App() {
   return (
-        <Grid
-          container
-          sx={{ height: '100vh'}}
-        >
-          <Grid item xs={12} display={'block'} > 
-            <Navbar />
-            <Box  sx={{ display: { md: 'block', xs: 'none' } }}>
-              <Header />  
-            </Box>
-          </Grid>
-        </Grid>
+    <Grid container sx={{ height: "100vh" }}>
+      <Grid item xs={12} display={"block"}>
+        <Navbar />
+        <Header />
+        <Carousel2 />
+      </Grid>
+    </Grid>
   );
 }
 
 export default App;
-
-

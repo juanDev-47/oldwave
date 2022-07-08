@@ -13,5 +13,5 @@ export const oldwaveTheme = createTheme({
           'Poppins-SemiBold',
           'Poppins-Regular',
         ].join(','),
-      },
+      },    
   });

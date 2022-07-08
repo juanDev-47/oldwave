@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled} from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,9 +14,6 @@ const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: "20px",
   backgroundColor: "#FFFFFF",
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
   marginLeft: 0,
   width: "100%",
   [theme.breakpoints.up("sm")]: {
@@ -43,11 +40,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      "&:focus": {
-        width: "20ch",
-      },
-    },
   },
 }));
 
@@ -82,20 +74,22 @@ export default function Header() {
                 <SearchIconWrapper>
                   <StyledIconSearch />
                 </SearchIconWrapper>
-                <StyledInputBase inputProps={{ "aria-label": "search" }} />
+                <StyledInputBase placeholder="estoy buscando..." inputProps={{ "aria-label": "search" }} />
               </Search>
             </Box>
-            <StyledButtonVar
-              variant="contained"
-            >
-              Buscar
-            </StyledButtonVar>
-            <StyledButtonVar
-              variant="contained"
-            >
-              <img src={filterIcon} className="h-4 mr-1" alt="oldwaveFilter" />
-              <Typography variant="body1" sx={{ marginLeft: '5px'}}>Filtros</Typography>
-            </StyledButtonVar>
+            <Box sx={{ display: { md: 'block', xs: 'none' } }}>
+              <StyledButtonVar
+                variant="contained"
+              >
+                Buscar
+              </StyledButtonVar>
+              <StyledButtonVar
+                variant="contained"
+              >
+                <img src={filterIcon} className="h-4 mr-1" alt="oldwaveFilter" />
+                <Typography variant="body1" sx={{ marginLeft: '5px'}}>Filtros</Typography>
+              </StyledButtonVar>
+            </Box>
           </Toolbar>
         </StyledAppBar>
       </Box>
