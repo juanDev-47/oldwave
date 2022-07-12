@@ -18,7 +18,7 @@ function Example(props)
     ]
 
     return (
-        <Carousel  duration={2500} animation={"slide"} autoPlay={false} indicatorIconButtonProps={{
+        <Carousel  duration={500} animation={"fade"} autoPlay={false} indicatorIconButtonProps={{
           style: { 
               color: '#000000',
               backgroundColor: '#C5D3DD',
