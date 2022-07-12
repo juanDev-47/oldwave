@@ -9,7 +9,7 @@ const Tittle = ({tittle}:data) => {
   return (
     <Grid container  >
       <Grid xs={12}>
-        <Typography variant="h3" sx={{color: '#772CE8', textAlign: 'center'}}>
+        <Typography variant="h3" sx={{color: '#772CE8', textAlign: 'center'  }}>
         {tittle}
         </Typography>
       </Grid>

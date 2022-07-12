@@ -5,6 +5,7 @@ import Header from "./components/Header.tsx";
 import Navbar from "./components/Navbar.tsx";
 // @ts-ignore
 import Carousel2 from "./components/Carousel2.tsx";
+// @ts-ignore
 import Tittle from "./components/Tittle.tsx";
 
 function App() {
