@@ -1,7 +1,5 @@
 import { Grid } from "@mui/material";
 // @ts-ignore
-import Carousel from "./components/Carousel.tsx";
-// @ts-ignore
 import Header from "./components/Header.tsx";
 // @ts-ignore
 import Navbar from "./components/Navbar.tsx";
