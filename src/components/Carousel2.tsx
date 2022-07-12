@@ -23,9 +23,6 @@ function Example(props)
               color: '#000000',
               backgroundColor: '#C5D3DD',
               margin: '0 3px',
-              display: {
-                '@media (min-width: 600px)': 'none',
-              }
           }
       }}
       activeIndicatorIconButtonProps={{
