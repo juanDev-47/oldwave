@@ -81,13 +81,13 @@ export default function Header() {
               <StyledButtonVar
                 variant="contained"
               >
-                Buscar
+                <Typography variant="body2" sx={{ marginLeft: '5px'}}>Buscar</Typography>
               </StyledButtonVar>
               <StyledButtonVar
                 variant="contained"
               >
                 <img src={filterIcon} className="h-4 mr-1" alt="oldwaveFilter" />
-                <Typography variant="body1" sx={{ marginLeft: '5px'}}>Filtros</Typography>
+                <Typography variant="body2" sx={{ marginLeft: '5px'}}>Filtros</Typography>
               </StyledButtonVar>
             </Box>
           </Toolbar>

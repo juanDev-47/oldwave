@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar.tsx";
 import Carousel2 from "./components/Carousel2.tsx";
 // @ts-ignore
 import Tittle from "./components/Tittle.tsx";
+// @ts-ignore
+import Carousel1 from "./components/Carousel1.tsx";
+
 
 function App() {
   return (
@@ -16,6 +19,7 @@ function App() {
         <Header />
         <Carousel2 />
         <Tittle tittle="¿Qué estás buscando hoy?" />
+        <Carousel1 />
       </Grid>
     </Grid>
   );

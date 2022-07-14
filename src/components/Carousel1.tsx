@@ -1,24 +1,23 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import fridayBanner from "../assets/img/banner-blackfriday@2x.png";
-import bannerAux from "../assets/img/banner-auxilar-ordenadores@2x.png";
+import carros from "../assets/icons/icon-carro@2x.png";
+import electrodomesticos from "../assets/icons/icon-electrodomesticos@2x.png";
 
-function Carousel2(props) {
+function Carousel1(props) {
   var items = [
     {
-      label: "Black Friday",
-      imgPath: fridayBanner,
+      label: "electrodomesticos",
+      imgPath: electrodomesticos,
     },
     {
-      label: "promotion",
-      imgPath: bannerAux,
+      label: "carros",
+      imgPath: carros,
     },
   ];
 
   return (
     <Carousel
-      index={2}
       duration={500}
       animation={"fade"}
       autoPlay={false}
@@ -55,8 +54,8 @@ function Item(props) {
       <Box
         component="img"
         sx={{
-          display: "block",
-          width: "100%",
+          display: "inline",
+          width: "auto",
         }}
         src={props.item.imgPath}
         alt={props.item.label}
@@ -65,4 +64,4 @@ function Item(props) {
   );
 }
 
-export default Carousel2;
+export default Carousel1;

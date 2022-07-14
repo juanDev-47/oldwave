@@ -10,8 +10,8 @@ export const oldwaveTheme = createTheme({
     },
     typography: {
         fontFamily: [
-          'Poppins-SemiBold',
-          'Poppins-Regular',
+          '"Poppins"',
+          'Open Sans',
         ].join(','),
       },    
   });
