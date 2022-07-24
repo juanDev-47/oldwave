@@ -9,19 +9,13 @@ import Carousel2 from "./components/Carousel2.tsx";
 import Tittle from "./components/Tittle.tsx";
 // @ts-ignore
 import Carousel1 from "./components/Carousel1.tsx";
+// @ts-ignore
+import Home from "./pages/home/Home.tsx";
 
 
 function App() {
   return (
-    <Grid container sx={{ height: "100vh" }}>
-      <Grid item xs={12} display={"block"}>
-        <Navbar />
-        <Header />
-        <Carousel2 />
-        <Tittle tittle="¿Qué estás buscando hoy?" />
-        <Carousel1 />
-      </Grid>
-    </Grid>
+    <Home />
   );
 }
 

@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import carros from "../assets/icons/icon-carro@2x.png";
-import electrodomesticos from "../assets/icons/icon-electrodomesticos@2x.png";
+import carros from "../../../assets/icons/icon-carro@2x.png";
+import electrodomesticos from "../../../assets/icons/icon-electrodomesticos@2x.png";
 
 function Carousel1(props) {
   var items = [

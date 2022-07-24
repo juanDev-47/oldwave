@@ -7,8 +7,10 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button, ThemeProvider, Typography } from "@mui/material";
 // @ts-ignore
-import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
-import filterIcon from "../assets/icons/icon-filter@2x.png";
+import filterIcon from "../../assets/icons/icon-filter@2x.png";
+// @ts-ignore
+import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",

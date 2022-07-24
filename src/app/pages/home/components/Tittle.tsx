@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/styles";
 import React from "react";
 // @ts-ignore
-import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
+import { oldwaveTheme } from "../../../themes/oldwaveTheme.tsx";
 
 interface data {
   tittle: string;

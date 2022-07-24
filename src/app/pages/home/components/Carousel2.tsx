@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import { Paper, Box } from "@mui/material";
-import fridayBanner from "../assets/img/banner-blackfriday@2x.png";
-import bannerAux from "../assets/img/banner-auxilar-ordenadores@2x.png";
+import fridayBanner from "../../../assets/img/banner-blackfriday@2x.png";
+import bannerAux from "../../../assets/img/banner-auxilar-ordenadores@2x.png";
 
 function Carousel2(props) {
   var items = [

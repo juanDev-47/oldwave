@@ -8,10 +8,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 // import Typography from "@mui/material/Typography";
 import { Button, ThemeProvider } from "@mui/material";
 // @ts-ignore
-import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
-import oldWaveLogo from "../assets/logo/oldwave-logo-horizontal.png";
-import login2x from "../assets/icons/login-icon@2x.png";
-import carrito2x from "../assets/icons/carrito-icon@2x.png";
+import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
+import oldWaveLogo from "../../assets/logo/oldwave-logo-horizontal.png";
+import login2x from "../../assets/icons/login-icon@2x.png";
+import carrito2x from "../../assets/icons/carrito-icon@2x.png";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#FFFFFF",
