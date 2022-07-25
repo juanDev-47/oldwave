@@ -1,4 +1,4 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Button, Grid, InputBase, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
@@ -6,8 +6,44 @@ const StyledTypography = styled(Typography)`
   padding: 0 20px;
   color: #ffffff;
   font-size: { xs: "11px", md: "16px" };
-  text-align: justify;
+  text-align: { md: "justify" };
+  width: 100%;
+
 `;
+
+const Search = styled("div")(({ theme }) => ({
+  borderRadius: "20px",
+  backgroundColor: "#FFFFFF",
+  marginLeft: 0,
+  [theme.breakpoints.up("xs")]: {
+    marginLeft: theme.spacing(6),
+    width: "80%",
+  },
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  width: "100%",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: theme.spacing(4),
+    transition: theme.transitions.create("width"),
+    width: "100%",
+  },
+}));
+
+const StyledButtonVar = styled(Button)(({ theme }) => ({
+  color: "#FFFFFF",
+  backgroundColor: "#772CE8",
+  "&:hover": {
+    backgroundColor: "#9C65F9",
+  },
+  borderRadius: "20px",
+  border: "1px solid #ffffff",
+  margin: "10px 10px",
+  padding: "9px 10px",
+  width: "80%",
+}));
 
 const WhyUsFooter = () => {
   return (
@@ -31,8 +67,9 @@ const WhyUsFooter = () => {
         justifyContent="center"
         alignItems="center"
         textAlign="center"
+        width={{ xs: "100%" }}
       >
-        <Grid sx={{marginLeft: "10%" }}>
+        <Grid sx={{ marginLeft: "10%", textAlign: "left" }}>
           <StyledTypography
             fontSize={{ xs: "18px", md: "26px" }}
             fontWeight={700}
@@ -47,15 +84,31 @@ const WhyUsFooter = () => {
       <Grid
         sm={12}
         md={7}
+        container
         item
-        sx={{ display: "flex" }}
         justifyContent="center"
         alignItems="center"
         textAlign="center"
       >
-        <Grid sx={{ display: "flex" }}>
-          <StyledTypography>
-            Multiples medios <br /> de pago
+        <Grid xs={12} md={6}>
+          <Search>
+            <StyledInputBase
+              placeholder="Ingresa tu correo electrónico"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+        </Grid>
+        <Grid xs={12} md={6}>
+          <StyledButtonVar variant="contained">
+            <Typography variant="body2" sx={{ marginLeft: "5px" }}>
+              Subscribirme
+            </Typography>
+          </StyledButtonVar>
+        </Grid>
+        <Grid display={{ xs: "none", md: "block" }} margin={1} xs={12} md={12}>
+          <StyledTypography textAlign="left">
+            *Al subscribirme acepto recibir email de oldwave, bajo sus politicas
+            de datos
           </StyledTypography>
         </Grid>
       </Grid>
