@@ -17,16 +17,21 @@ const WhyUsFooter = () => {
   return (
     <Grid
       container
-      sx={{ width: "100%", background: "#c8f3fd", padding: { xs: '20px 0', md: '40px 0' } }}
+      sx={{
+        width: "100%",
+        background: "#c8f3fd",
+        padding: { xs: "20px 0", md: "40px 0" },
+      }}
       direction="row"
       justifyContent="center"
       alignItems="center"
-      spacing={{ xs: 3, md: 2 }}
+      mb={"16px"}
+      rowSpacing={{ xs: "15px" }}
     >
       <Grid
         item
         xs={6}
-        xl={3}
+        md={3}
         sx={{ display: "flex" }}
         justifyContent="center"
         alignItems="center"
@@ -49,7 +54,7 @@ const WhyUsFooter = () => {
       <Grid
         item
         xs={6}
-        xl={3}
+        md={3}
         sx={{ display: "flex" }}
         justifyContent="center"
         alignItems="center"
@@ -59,7 +64,7 @@ const WhyUsFooter = () => {
           <Box
             component="img"
             sx={{
-              width: "auto",
+              height: { xs: "32px" },
             }}
             src={multiplesMediosDePago}
             alt={"multiplesMediosDePago"}
@@ -72,7 +77,7 @@ const WhyUsFooter = () => {
       <Grid
         item
         xs={6}
-        xl={3}
+        md={3}
         sx={{ display: "flex" }}
         justifyContent="center"
         alignItems="center"
@@ -95,7 +100,7 @@ const WhyUsFooter = () => {
       <Grid
         item
         xs={6}
-        xl={3}
+        md={3}
         sx={{ display: "flex" }}
         justifyContent="center"
         alignItems="center"
