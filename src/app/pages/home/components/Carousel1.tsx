@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { hslToRgb, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import "./Carousel1.css";
 import carros from "../../../assets/icons/icon-carro.png";
 import motos from "../../../assets/icons/icon-moto.png";
@@ -18,8 +18,6 @@ const StyledTypography = styled(Typography)`
   font-size: {{ xs: "10px", md: "14px" }};
   padding: 0;
   color: #5C5E64;
-  
-
 `;
 
 function Carousel1(props) {
