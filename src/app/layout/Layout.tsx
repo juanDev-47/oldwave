@@ -8,6 +8,8 @@ import Header from './components/Header.tsx';
 import WhyUsFooter from './components/WhyUsFooter.tsx';
 // @ts-ignore
 import SubscriptionOldWave from './components/SubscriptionOldWave.tsx';
+// @ts-ignore
+import Footer from './components/Footer.tsx';
 
 const Layout = ({children}): any => {
   return (
@@ -18,6 +20,7 @@ const Layout = ({children}): any => {
         {children}
         <WhyUsFooter />
         <SubscriptionOldWave />
+        <Footer />
       </Grid>
     </Grid>
   );

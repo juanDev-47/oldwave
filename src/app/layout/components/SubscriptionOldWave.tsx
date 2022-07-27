@@ -14,9 +14,8 @@ const StyledTypography = styled(Typography)`
 const Search = styled("div")(({ theme }) => ({
   borderRadius: "20px",
   backgroundColor: "#FFFFFF",
-  marginLeft: 0,
+  marginLeft: '10%',
   [theme.breakpoints.up("xs")]: {
-    marginLeft: theme.spacing(6),
     width: "80%",
   },
 }));
@@ -26,9 +25,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: theme.spacing(4),
-    transition: theme.transitions.create("width"),
-    width: "100%",
+    paddingLeft: theme.spacing(3),
+    width: "80%",
   },
 }));
 
@@ -69,7 +67,7 @@ const WhyUsFooter = () => {
         textAlign="center"
         width={{ xs: "100%" }}
       >
-        <Grid sx={{ marginLeft: "10%", textAlign: "left" }}>
+        <Grid sx={{ marginLeft: { xs: '0', md: "10%"}, textAlign: { xs: 'center', md: 'left'} }}>
           <StyledTypography
             fontSize={{ xs: "18px", md: "26px" }}
             fontWeight={700}
@@ -90,7 +88,10 @@ const WhyUsFooter = () => {
         alignItems="center"
         textAlign="center"
       >
-        <Grid xs={12} md={6}>
+        <Grid
+          xs={12}
+          md={6}
+        >
           <Search>
             <StyledInputBase
               placeholder="Ingresa tu correo electrónico"
@@ -100,7 +101,7 @@ const WhyUsFooter = () => {
         </Grid>
         <Grid xs={12} md={6}>
           <StyledButtonVar variant="contained">
-            <Typography variant="body2" sx={{ marginLeft: "5px" }}>
+            <Typography variant="body2" >
               Subscribirme
             </Typography>
           </StyledButtonVar>
