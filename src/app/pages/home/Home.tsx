@@ -15,21 +15,28 @@ import CarouselProduct from "./components/CarouselProduct.tsx";
 import { useContextProvider } from "../../context/contextProvider.tsx";
 // @ts-ignore
 import { getAllProducts } from "./services/services.ts";
+// @ts-ignore
+import ProductList from "./components/ProductList.tsx";
 
 const Home = () => {
   const { search } = useContextProvider();
 
   const products = getAllProducts(search).then(res => console.log(res.products.data));
+  console.log(products);
 
-  console.log("SEARCH FROM HOME: ", products);
   return (
     <Layout>
-      <Carousel2 />
-      <Tittle tittle="¿Qué estás buscando hoy?" />
-      <Carousel1 /> 
-      {/* here goes product component (ToDo) */}
-      <TittleProducts tittle='Productos más recientes' />
-      <CarouselProduct />
+      {search === "" ? (
+        <>
+          <Carousel2 />
+          <Tittle tittle="¿Qué estás buscando hoy?" />
+          <Carousel1 />
+          <TittleProducts tittle="Productos más recientes" />
+          <CarouselProduct />
+        </>
+      ) : (
+          <ProductList />
+      )}
     </Layout>
   );
 };

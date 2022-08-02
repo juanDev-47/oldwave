@@ -6,17 +6,12 @@ console.log("url from services: ", API_URL);
 
 export const getAllProducts = async (productName) => {
   try {
-    const products = await axios.get(
+    return await axios.get(
       `${API_URL}${endpoints.products.list}`,
       {
         params: { contract: productName, pageNumber: 1, pageSize: 10 },
       }
-    ).then((data) => {
-      return data.data;
-    });
-
-    console.log(products);
-    return {products};
+    );
   } catch (err) {
     console.log(err);
   }
