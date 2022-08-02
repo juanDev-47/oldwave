@@ -9,12 +9,15 @@ import reportWebVitals from "./reportWebVitals";
 // @ts-ignore
 // @ts-ignore
 import AppRoutes from "./app/routing/AppRoutes.tsx";
-
+// @ts-ignore
+import ContextProvider from "./app/context/contextProvider.tsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppRoutes/>
+    <ContextProvider>
+      <AppRoutes />
+    </ContextProvider>
   </React.StrictMode>
 );
 

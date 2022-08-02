@@ -11,8 +11,17 @@ import Layout from "../../layout/Layout.tsx";
 import TittleProducts from "./components/TittleProducts.tsx";
 // @ts-ignore
 import CarouselProduct from "./components/CarouselProduct.tsx";
+// @ts-ignore
+import { useContextProvider } from "../../context/contextProvider.tsx";
+// @ts-ignore
+import { getAllProducts } from "./services/services.ts";
 
 const Home = () => {
+  const { search } = useContextProvider();
+
+  const products = getAllProducts(search).then(res => console.log(res.products.data));
+
+  console.log("SEARCH FROM HOME: ", products);
   return (
     <Layout>
       <Carousel2 />

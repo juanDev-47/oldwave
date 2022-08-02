@@ -501,6 +501,9 @@ video {
 .block {
   display: block;
 }
+.inline {
+  display: inline;
+}
 .flex {
   display: flex;
 }
@@ -518,6 +521,9 @@ video {
 }
 .border {
   border-width: 1px;
+}
+.line-through {
+  text-decoration-line: line-through;
 }
 .invert {
   --tw-invert: invert(100%);

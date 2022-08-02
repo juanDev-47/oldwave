@@ -10,6 +10,8 @@ import { Button, ThemeProvider, Typography } from "@mui/material";
 import filterIcon from "../../assets/icons/icon-filter@2x.png";
 // @ts-ignore
 import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
+// @ts-ignore
+import { useContextProvider } from "../../context/contextProvider.tsx";
 
 
 const Search = styled("div")(({ theme }) => ({
@@ -66,6 +68,8 @@ const StyledButtonVar = styled(Button)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const { search, setSearch } = useContextProvider();
+
   return (
     <ThemeProvider theme={oldwaveTheme}>
       <Box sx={{ flexGrow: 1 }}>
@@ -76,7 +80,7 @@ export default function Header() {
                 <SearchIconWrapper>
                   <StyledIconSearch />
                 </SearchIconWrapper>
-                <StyledInputBase placeholder="estoy buscando..." inputProps={{ "aria-label": "search" }} />
+                <StyledInputBase value={search} onChange={e => setSearch(e.target.value)} placeholder="estoy buscando..." inputProps={{ "aria-label": "search" }} />
               </Search>
             </Box>
             <Box sx={{ display: { md: 'block', xs: 'none' } }}>
