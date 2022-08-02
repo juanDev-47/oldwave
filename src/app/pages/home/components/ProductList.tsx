@@ -62,6 +62,20 @@ function CarouselProduct(props) {
       discount: "$3.250.000",
       image: iphone11pro,
     },
+    {
+      name: "iPhone 11 64GB Negro",
+      brand: "Apple",
+      price: "$3.250.000",
+      discount: "$3.250.000",
+      image: iphone11pro,
+    },
+    {
+      name: "iPhone 11 64GB Negro",
+      brand: "Apple",
+      price: "$3.250.000",
+      discount: "$3.250.000",
+      image: iphone11pro,
+    },
   ];
 
   return (
@@ -88,14 +102,14 @@ function Item(props) {
   return (
     <Grid
       item
-      xs={12}
+      xs={6}
       sm={4}
       md={3}
       lg={2}
       xl={2}
       sx={{
         marginBottom: "20px",
-        width: { sm: "165px", md: "180px" },
+        width: {sm: "165px", md: "180px" },
         height: "330px",
         borderRadius: "8px",
         opacity: "1",
