@@ -2,7 +2,7 @@ import { Box, Grid, Typography, Button } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
 import "./Carousel1.css";
-import iphone11pro from "../../../assets/img/iphone11pro@2x.png";
+import { useNavigate } from "react-router-dom";
 
 const StyledButtonVar = styled(Button)(({ theme }) => ({
   color: "#FFFFFF",
@@ -25,59 +25,8 @@ const StyledTypography = styled(Typography)`
   text-align: center;
 `;
 
-function CarouselProduct(props) {
-  var items = [
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-  ];
-
+function CarouselProduct({ allDataResults }) {
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -89,18 +38,30 @@ function CarouselProduct(props) {
       justifyContent="center"
       alignItems="center"
     >
-      <Grid container item width='100%' maxWidth='1333px' justifyContent="center" >
-        {items.map((item, i) => (
-          <Item key={i} item={item} />
-        ))}
-      </Grid>
+      {allDataResults.length > 0 && (
+        <Grid
+          container
+          item
+          width="100%"
+          maxWidth="1333px"
+          justifyContent="center"
+        >
+          {allDataResults.map((item, i) => (
+            <Item key={i} item={item} navigate={navigate} />
+          ))}
+        </Grid>
+      )}
     </Grid>
   );
 }
 
-function Item(props) {
+function Item({ item, navigate }) {
+  console.log(item.id);
   return (
     <Grid
+      onClick={() => {
+        navigate(`/product/${item.name}`, { state: item  });
+      }}
       item
       xs={6}
       sm={4}
@@ -109,7 +70,7 @@ function Item(props) {
       xl={2}
       sx={{
         marginBottom: "20px",
-        width: {sm: "165px", md: "180px" },
+        width: { sm: "165px", md: "180px" },
         height: "330px",
         borderRadius: "8px",
         opacity: "1",
@@ -125,25 +86,25 @@ function Item(props) {
           width: "100%",
           borderRadius: "8px",
         }}
-        src={props.item.image}
-        alt={props.item.name}
+        src={item.images[0].url}
+        alt={item.name}
       />
       <Grid container justifyContent="center" width="100%">
-        <StyledTypography>{props.item.name}</StyledTypography>
+        <StyledTypography>{item.name}</StyledTypography>
         <StyledTypography style={{ color: "#772CE8" }}>
-          {props.item.brand}
+          {item.brand}
         </StyledTypography>
         <Grid container justifyContent="center">
           <Grid item xs={6}>
             <StyledTypography
               style={{ textDecoration: "line-through", width: "100%" }}
             >
-              {props.item.price}
+              {item.price}
             </StyledTypography>
           </Grid>
           <Grid item xs={6}>
             <StyledTypography style={{ color: "#772CE8", width: "100%" }}>
-              {props.item.discount}
+              {item.discount}
             </StyledTypography>
           </Grid>
         </Grid>

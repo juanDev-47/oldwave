@@ -18,7 +18,7 @@ const AppRoutes: React.FC = () => {
     <BrowserRouter basename={PUBLIC_URL}>
       <Routes>
         <Route element={<Home />} path="/" />
-        <Route element={<Product />} path="/product/" />
+        <Route element={<Product />} path="/product/:name" />
       </Routes>
     </BrowserRouter>
   )

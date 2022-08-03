@@ -4,7 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 // import Typography from "@mui/material/Typography";
 import { Button, ThemeProvider } from "@mui/material";
 // @ts-ignore
@@ -12,6 +12,7 @@ import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
 import oldWaveLogo from "../../assets/logo/oldwave-logo-horizontal.png";
 import login2x from "../../assets/icons/login-icon@2x.png";
 import carrito2x from "../../assets/icons/carrito-icon@2x.png";
+import { useNavigate } from "react-router-dom";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#FFFFFF",
@@ -30,12 +31,14 @@ const StyledButtonBar = styled(Button)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   return (
     <ThemeProvider theme={oldwaveTheme}>
       <Box sx={{ flexGrow: 1 }}>
         <StyledAppBar position="static">
           <Toolbar>
-            <Box sx={{ display: { md: 'none', xs: 'block' } }}>
+            <Box sx={{ display: { md: "none", xs: "block" } }}>
               <IconButton
                 size="large"
                 edge="start"
@@ -52,11 +55,15 @@ export default function Navbar() {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={() => {
+                console.log("prbando navigate");
+                navigate("/", { replace: true });
+              }}
             >
               <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
             </IconButton>
             <div className="flex-grow"></div>
-            <Box sx={{ display: { md: 'block', xs: 'none' } }}>
+            <Box sx={{ display: { md: "block", xs: "none" } }}>
               <StyledButtonBar color="inherit">
                 Registrate o inicia sesión
               </StyledButtonBar>

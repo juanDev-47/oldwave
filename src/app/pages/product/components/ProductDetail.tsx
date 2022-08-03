@@ -1,5 +1,6 @@
 import { Grid, Typography, Box, styled } from "@mui/material";
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const StyledTypography = styled(Typography)`
   font-size: 14px;
@@ -12,18 +13,8 @@ const StyledTypography = styled(Typography)`
 `;
 
 const ProductDetail = () => {
-  const product = {
-    src: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-    name: "Nevera 215 Lts",
-    city: "Medellin",
-    brand: "Haceb",
-    price: "3.250.000",
-    seller: "Haceb",
-    logo: "https://www.haceb.com/wcsstore/Global/images/logo/haceb-logo-white.png",
-    discount: "2.750.000",
-    description: "Producto de alta calidad",
-    rating: 4,
-  };
+  const location = useLocation();
+
 
   return (
     <Grid container width="100%" marginBottom="15px">
@@ -31,8 +22,8 @@ const ProductDetail = () => {
         <Box
           component="img"
           sx={{ width: "100%" }}
-          src={`${product.src}`}
-          alt={`${product.name}`}
+          src={`${location.state.images[0].url}`}
+          alt={`${location.state.name}`}
         ></Box>
       </Grid>
       <Grid item xs={12} md={6} sx={{ padding: { xs: "15px", md: "20px" } }}>
@@ -43,7 +34,7 @@ const ProductDetail = () => {
             fontWeight: "bold",
           }}
         >
-          {product.name}
+          {location.state.name}
         </StyledTypography>
         <StyledTypography
           sx={{ fontSize: { md: "18px" }, fontWeight: "bold" }}
@@ -59,7 +50,7 @@ const ProductDetail = () => {
               fontWeight: "bold",
             }}
           >
-            $ {product.price}
+            $ {location.state.price}
           </StyledTypography>
           <StyledTypography
             sx={{
@@ -68,7 +59,7 @@ const ProductDetail = () => {
               fontWeight: "bold",
             }}
           >
-            $ {product.discount}
+            $ {location.state.discount}
           </StyledTypography>
         </Grid>
         <StyledTypography
@@ -76,35 +67,35 @@ const ProductDetail = () => {
             fontSize: {md: "18px" },
           }}
         >
-          <Box component='span' fontWeight='bold' >Vendido por: </Box> {product.seller}
+          <Box component='span' fontWeight='bold' >Vendido por: </Box> {location.state.seller.name}
         </StyledTypography>
         <StyledTypography
           sx={{
             fontSize: {md: "18px" },
           }}
         >
-          <Box component='span' fontWeight='bold' >Ciudad: </Box> {product.city}
+          <Box component='span' fontWeight='bold' >Ciudad: </Box> {location.state.city}
         </StyledTypography>
         <StyledTypography
           sx={{
             fontSize: { md: "18px" },
           }}
         >
-          <Box component='span' fontWeight='bold' >Marca: </Box>{product.brand}
+          <Box component='span' fontWeight='bold' >Marca: </Box>{location.state.brand}
         </StyledTypography>
         <StyledTypography
           sx={{
             fontSize: { md: "18px" },
           }}
         >
-          <Box component='span' fontWeight='bold' >Rating: </Box>{product.rating}
+          <Box component='span' fontWeight='bold' >Rating: </Box>{location.state.rating}
         </StyledTypography>
         <StyledTypography
           sx={{
             fontSize: { md: "18px" },
           }}
         >
-          <Box component='span' fontWeight='bold' >Descripción: </Box> {product.description}
+          <Box component='span' fontWeight='bold' >Descripción: </Box> {location.state.description}
         </StyledTypography>
       </Grid>
     </Grid>

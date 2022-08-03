@@ -17,6 +17,16 @@ export const getAllProducts = async (productName) => {
   }
 };
 
-// export const getProductById = async (produtId) => {
-//     return await axios.get(`${API_URL_ITEMS}/${produtId}`)
-// }
+export const getProductByCategory = async (categoryId) => {
+  // console.log("categoryId from services: ", categoryId);
+  try {
+    return await axios.get(
+      `${API_URL}${endpoints.products.category}${categoryId}/category`,
+      {
+        params: { categoryId: categoryId, pageNumber: 1, pageSize: 10 },
+      }
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};

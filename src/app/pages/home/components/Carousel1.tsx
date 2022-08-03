@@ -13,6 +13,9 @@ import computadores from "../../../assets/icons/icon-computadores.png";
 import celular from "../../../assets/icons/icon-celular.png";
 import tv from "../../../assets/icons/icon-tv.png";
 import electrodomesticos from "../../../assets/icons/icon-electrodomesticos.png";
+// @ts-ignore
+import { useContextProvider } from "../../../context/contextProvider.tsx";
+
 
 const StyledTypography = styled(Typography)`
   font-size: {{ xs: "10px", md: "14px" }};
@@ -25,40 +28,50 @@ function Carousel1(props) {
     {
       label: "Carros",
       imgPath: carros,
+      categoryId: '3471ea82-7a85-4d9b-b42c-c8ffdad60df4'
     },
     {
       label: "Motos",
       imgPath: motos,
+      categoryId: 'f18f093f-cb40-4dc1-98cf-3e26f050e5ae'
     },
     {
       label: "Ropa",
       imgPath: ropa,
+      categoryId: '2d101e69-5367-4de4-a8a0-112cc14321bf'
     },
     {
       label: "Deporte",
       imgPath: deporte,
+      categoryId: '20f28ce1-26c0-4ced-bf59-065def757ece'
     },
     {
       label: "Muebles",
       imgPath: muebles,
+      categoryId: 'f8e2357f-cbe8-4a40-b9bf-dbd905d1df43'
     },
     {
       label: "Computadores",
       imgPath: computadores,
+      categoryId: '0a6a0267-0095-4be0-a1be-4c516ba0b6ef'
     },
     {
       label: "Celulares",
       imgPath: celular,
+      categoryId: '9f2a8b05-7550-45f2-ac1f-6e2db9e7eb9a'
     },
     {
       label: "TV, Audio y foto",
       imgPath: tv,
+      categoryId: 'c697f242-d119-40b9-960f-b79320306a0f'
     },
     {
       label: "Electrodomésticos",
       imgPath: electrodomesticos,
+      categoryId: 'e0e83f5e-7e88-481b-ad67-4712c4cdc782'
     },
   ];
+
 
   return (
     <Grid container justifyContent={"center"} sx={{ paddingBottom: "15px" }}>
@@ -121,6 +134,7 @@ function Carousel1(props) {
 }
 
 function Item(props) {
+  const { category, setCategory } = useContextProvider();
   return (
     <Grid
       sx={{
@@ -132,6 +146,7 @@ function Item(props) {
       }}
     >
       <Box
+        onClick={ () => setCategory(props.item.categoryId) }
         component="img"
         sx={{
           padding: "15px 20px",
