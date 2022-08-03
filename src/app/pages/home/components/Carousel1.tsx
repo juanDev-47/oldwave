@@ -134,7 +134,7 @@ function Carousel1(props) {
 }
 
 function Item(props) {
-  const { category, setCategory } = useContextProvider();
+  const { setCategory } = useContextProvider();
   return (
     <Grid
       sx={{

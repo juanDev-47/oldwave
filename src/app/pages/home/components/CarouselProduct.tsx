@@ -4,15 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { styled } from "@mui/material/styles";
 import "./Carousel1.css";
-import iphone11pro from "../../../assets/img/iphone11pro@2x.png";
-
-// interface data {
-//   name: string,
-//   brand: string,
-//   price: Number,
-//   discount: Number,
-//   image: string,
-// }
+import { useNavigate } from "react-router-dom";
 
 const StyledButtonVar = styled(Button)(({ theme }) => ({
   color: "#FFFFFF",
@@ -25,7 +17,7 @@ const StyledButtonVar = styled(Button)(({ theme }) => ({
   border: "1px solid #ffffff",
   marginTop: "10px",
   padding: "5px 20px",
-  fontSize: '10px',
+  fontSize: "10px",
 }));
 
 const StyledTypography = styled(Typography)`
@@ -34,44 +26,9 @@ const StyledTypography = styled(Typography)`
   width: 80%;
 `;
 
-function CarouselProduct(props) {
-  var items = [
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-    {
-      name: "iPhone 11 64GB Negro",
-      brand: "Apple",
-      price: "$3.250.000",
-      discount: "$3.250.000",
-      image: iphone11pro,
-    },
-  ];
+function CarouselProduct({ allDataCurrent }) {
+  const navigate = useNavigate();
+
 
   return (
     <Grid
@@ -129,17 +86,20 @@ function CarouselProduct(props) {
         slidesToSlide={1}
         swipeable
       >
-        {items.map((item, i) => (
-          <Item key={i} item={item} />
+        {allDataCurrent.map((item, i) => (
+          <Item key={i} item={item} navigate={navigate} />
         ))}
       </Carousel>
     </Grid>
   );
 }
 
-function Item(props) {
+function Item({item, navigate}) {
   return (
     <Grid
+      onClick={() => {
+        navigate(`/product/${item.name}`, { state: item });
+      }}
       sx={{
         width: { xs: "165px", md: "180px" },
         height: "330px",
@@ -156,25 +116,29 @@ function Item(props) {
           width: "100%",
           borderRadius: "8px",
         }}
-        src={props.item.image}
-        alt={props.item.name}
+        src={item.images[0].url}
+        alt={item.name}
       />
       <Grid container justifyContent="center" width="100%">
-        <StyledTypography>{props.item.name}</StyledTypography>
+        <StyledTypography>{item.name}</StyledTypography>
         <StyledTypography style={{ color: "#772CE8" }}>
-          {props.item.brand}
+          {item.brand}
         </StyledTypography>
-        <Grid container justifyContent='center' >
+        <Grid container justifyContent="center">
           <Grid item xs={6}>
-            <StyledTypography style={{ textDecoration: "line-through", width: '100%' }}>
-              {props.item.price}
+            <StyledTypography
+              style={{ textDecoration: "line-through", width: "100%" }}
+            >
+              {item.price}
             </StyledTypography>
           </Grid>
           <Grid item xs={6}>
-            <StyledTypography style={{ color: "#772CE8", width: '100%' }} >{props.item.discount}</StyledTypography>
+            <StyledTypography style={{ color: "#772CE8", width: "100%" }}>
+              {item.discount}
+            </StyledTypography>
           </Grid>
         </Grid>
-        <Grid container justifyContent='center'>
+        <Grid container justifyContent="center">
           <StyledButtonVar>Agregar al carrito</StyledButtonVar>
         </Grid>
       </Grid>

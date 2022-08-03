@@ -56,7 +56,6 @@ function CarouselProduct({ allDataResults }) {
 }
 
 function Item({ item, navigate }) {
-  console.log(item.id);
   return (
     <Grid
       onClick={() => {

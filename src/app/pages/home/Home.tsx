@@ -14,7 +14,11 @@ import CarouselProduct from "./components/CarouselProduct.tsx";
 // @ts-ignore
 import { useContextProvider } from "../../context/contextProvider.tsx";
 // @ts-ignore
-import { getAllProducts, getProductByCategory } from "./services/services.ts";
+import {
+  getAllProducts,
+  getProductByCategory,
+  getCurrentProducts,
+} from "./services/services.ts";
 // @ts-ignore
 import ProductList from "./components/ProductList.tsx";
 
@@ -25,6 +29,7 @@ const Home = () => {
   const { search, category } = useContextProvider();
 
   const [allDataResults, setAllDataResults] = useState([]);
+  const [allDataCurrent, setAllDataCurrent] = useState([]);
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState(false);
 
@@ -32,6 +37,14 @@ const Home = () => {
     setLoading(true);
     getAllProducts(search).then((res) => {
       setAllDataResults(res.data.data);
+      setLoading(false);
+    });
+  };
+
+  const currentProducts = () => {
+    setLoading(true);
+    getCurrentProducts().then((res) => {
+      setAllDataCurrent(res.data.data);
       setLoading(false);
     });
   };
@@ -44,6 +57,9 @@ const Home = () => {
     });
   };
 
+  useEffect(() => {
+    currentProducts();
+  }, [category]);
 
   useEffect(() => {
     if (search !== "") {
@@ -76,7 +92,7 @@ const Home = () => {
           <Tittle tittle="¿Qué estás buscando hoy?" />
           <Carousel1 />
           <TittleProducts tittle="Productos más recientes" />
-          <CarouselProduct />
+          <CarouselProduct allDataCurrent={allDataCurrent} />
         </>
       ) : Array.isArray(allDataResults) && allDataResults.length > 0 ? (
         <>

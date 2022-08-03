@@ -30,3 +30,13 @@ export const getProductByCategory = async (categoryId) => {
     console.log(err);
   }
 };
+
+export const getCurrentProducts = async () => {
+  try {
+    return await axios.get(
+      `${API_URL}${endpoints.products.current}`
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
