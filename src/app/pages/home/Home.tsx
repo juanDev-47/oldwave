@@ -21,7 +21,7 @@ import {
 } from "./services/services.ts";
 // @ts-ignore
 import ProductList from "./components/ProductList.tsx";
-
+import { useLocation } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Box, Typography } from "@mui/material";
 
@@ -36,10 +36,20 @@ const Home = () => {
   const products = (search) => {
     setLoading(true);
     getAllProducts(search).then((res) => {
+      console.table(res);
       setAllDataResults(res.data.data);
       setLoading(false);
     });
   };
+
+  // function for gototop
+  const routePath = useLocation();
+  const onTop = () => {
+    window.scrollTo(0, 0);
+  }
+  useEffect(() => {
+    onTop()
+  }, [routePath]);
 
   const currentProducts = () => {
     setLoading(true);
@@ -64,14 +74,15 @@ const Home = () => {
   useEffect(() => {
     if (search !== "") {
       setContent(false);
+      onTop();
       products(search);
     } else if (search === "") {
       setContent(true);
     }
   }, [search]);
 
+  // for print categories
   useEffect(() => {
-    // console.log(category);
     if (category !== "") {
       setContent(false);
       productsByCategory(category);

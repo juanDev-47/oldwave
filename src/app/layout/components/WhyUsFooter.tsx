@@ -17,6 +17,7 @@ const WhyUsFooter = () => {
   return (
     <Grid
       container
+      item
       sx={{
         width: "100%",
         background: "#c8f3fd",
@@ -37,7 +38,7 @@ const WhyUsFooter = () => {
         alignItems="center"
         textAlign="center"
       >
-        <Grid sx={{ display: "flex" }}>
+        <Grid item sx={{ display: "flex" }}>
           <Box
             component="img"
             sx={{
@@ -60,7 +61,7 @@ const WhyUsFooter = () => {
         alignItems="center"
         textAlign="center"
       >
-        <Grid sx={{ display: "flex" }}>
+        <Grid item sx={{ display: "flex" }}>
           <Box
             component="img"
             sx={{
@@ -83,7 +84,7 @@ const WhyUsFooter = () => {
         alignItems="center"
         textAlign="center"
       >
-        <Grid sx={{ display: "flex" }}>
+        <Grid item sx={{ display: "flex" }}>
           <Box
             component="img"
             sx={{
@@ -106,7 +107,7 @@ const WhyUsFooter = () => {
         alignItems="center"
         textAlign="center"
       >
-        <Grid sx={{ display: "flex" }}>
+        <Grid item sx={{ display: "flex" }}>
           <Box
             component="img"
             sx={{

@@ -28,17 +28,17 @@ function Carousel1(props) {
     {
       label: "Carros",
       imgPath: carros,
-      categoryId: '3471ea82-7a85-4d9b-b42c-c8ffdad60df4'
+      categoryId: '4f276a8a-2b7c-4b09-953a-e794e19c96da'
     },
     {
       label: "Motos",
       imgPath: motos,
-      categoryId: 'f18f093f-cb40-4dc1-98cf-3e26f050e5ae'
+      categoryId: '9faa9ac8-53f5-43fa-91e1-0a60b76c8122'
     },
     {
       label: "Ropa",
       imgPath: ropa,
-      categoryId: '2d101e69-5367-4de4-a8a0-112cc14321bf'
+      categoryId: 'a40f1a9c-671c-47d3-8ff8-864c50c271d6'
     },
     {
       label: "Deporte",

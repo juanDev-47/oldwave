@@ -1,8 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import { ThemeProvider } from "@mui/styles";
 import React from "react";
-// @ts-ignore
-import { oldwaveTheme } from "../../../themes/oldwaveTheme.tsx";
 
 interface data {
   tittle: string;
@@ -10,7 +7,6 @@ interface data {
 
 const Tittle = ({ tittle }: data) => {
   return (
-    <ThemeProvider theme={oldwaveTheme}>
       <Grid container>
         <Grid sx={{ width: "100%" }}>
           <Typography
@@ -25,7 +21,6 @@ const Tittle = ({ tittle }: data) => {
           </Typography>
         </Grid>
       </Grid>
-    </ThemeProvider>
   );
 };
 

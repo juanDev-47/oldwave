@@ -129,12 +129,12 @@ function Item({item, navigate}) {
             <StyledTypography
               style={{ textDecoration: "line-through", width: "100%" }}
             >
-              {item.price}
+              ${item.price}
             </StyledTypography>
           </Grid>
           <Grid item xs={6}>
             <StyledTypography style={{ color: "#772CE8", width: "100%" }}>
-              {item.discount}
+              ${item.discount}
             </StyledTypography>
           </Grid>
         </Grid>

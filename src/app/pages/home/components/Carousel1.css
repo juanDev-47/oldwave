@@ -10,3 +10,8 @@
   text-align: center;
   border: '1px solid black';
 }
+
+.MuiTypography-root {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

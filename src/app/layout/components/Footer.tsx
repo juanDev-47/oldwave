@@ -53,7 +53,7 @@ const Footer = () => {
             <img src={logo} alt="oldWave" />
           </IconButton>
         </Grid>
-        <Grid xs={12} md={3} sx={{ width: "100%", height:{ md: '200px'} }}>
+        <Grid xs={12} md={3} sx={{ width: "100%", height: { md: "200px" } }}>
           <Grid sx={{ display: { xs: "none", md: "inline" } }}>
             <Grid margin={2}>
               <Grid container justifyContent="left" textAlign="left">
@@ -123,7 +123,7 @@ const Footer = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>
-        <Grid xs={12} md={3} sx={{ width: "100%", height:{ md: '200px'} }}>
+        <Grid xs={12} md={3} sx={{ width: "100%", height: { md: "200px" } }}>
           <Grid sx={{ display: { xs: "none", md: "inline" } }}>
             <Grid margin={2}>
               <Grid container justifyContent="left" textAlign="left">
@@ -205,7 +205,7 @@ const Footer = () => {
             </AccordionDetails>
           </Accordion>
         </Grid>
-        <Grid xs={12} md={3} sx={{ width: "100%", height:{ md: '200px'} }}>
+        <Grid xs={12} md={3} sx={{ width: "100%", height: { md: "200px" } }}>
           <Grid sx={{ display: { xs: "none", md: "inline" } }}>
             <Grid margin={2}>
               <Grid container justifyContent="left" textAlign="left">
@@ -298,35 +298,29 @@ const Footer = () => {
                   Teléfono: 316 1924
                 </Box>
 
-                <Typography
-                  marginTop={2}
-                  sx={{ fontSize: { md: "20px", xs: "17px" } }}
-                  color="#772CE8"
-                >
-                  <Box component="span" sx={{ fontWeight: "bold" }}>
-                    Redes sociales
-                  </Box>
-                  <Grid>
-                    <IconButton
-                      size="large"
-                      edge="start"
-                      color="inherit"
-                      aria-label="menu"
-                      sx={{ mr: 2 }}
-                    >
-                      <img src={facebook} alt="oldWave-facebook" />
-                    </IconButton>
-                    <IconButton
-                      size="large"
-                      edge="start"
-                      color="inherit"
-                      aria-label="menu"
-                      sx={{ mr: 2 }}
-                    >
-                      <img src={instagram} alt="oldWave-instagram" />
-                    </IconButton>
-                  </Grid>
-                </Typography>
+                <Box component="span" sx={{ fontWeight: "bold" }}>
+                  Redes sociales
+                </Box>
+                <Grid>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
+                  >
+                    <img src={facebook} alt="oldWave-facebook" />
+                  </IconButton>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
+                  >
+                    <img src={instagram} alt="oldWave-instagram" />
+                  </IconButton>
+                </Grid>
               </Grid>
             </AccordionDetails>
           </Accordion>

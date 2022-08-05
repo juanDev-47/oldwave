@@ -1,16 +1,16 @@
 import { Grid, Typography } from "@mui/material";
-import { ThemeProvider } from "@mui/styles";
 import React from "react";
-// @ts-ignore
-import { oldwaveTheme } from "../../../themes/oldwaveTheme.tsx";
+import './Carousel1.css';
+import "@fontsource/poppins";
+
 
 interface data {
   tittle: string;
 }
 
+
 const TittleProducts = ({ tittle }: data) => {
   return (
-    <ThemeProvider theme={oldwaveTheme}>
       <Grid container>
         <Grid sx={{ width: "100%" }}>
           <Typography
@@ -19,13 +19,13 @@ const TittleProducts = ({ tittle }: data) => {
               textAlign: "center",
               my: "15px",
               typography: { xs: "h5", sm: "h4", md: "h3" },
+              fontFamily: ["Roboto", "sans-serif"],
             }}
           >
             {tittle}
           </Typography>
         </Grid>
       </Grid>
-    </ThemeProvider>
   );
 };
 

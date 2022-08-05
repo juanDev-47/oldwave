@@ -5,11 +5,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, ThemeProvider, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 // @ts-ignore
 import filterIcon from "../../assets/icons/icon-filter@2x.png";
-// @ts-ignore
-import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
 // @ts-ignore
 import { useContextProvider } from "../../context/contextProvider.tsx";
 
@@ -71,7 +69,6 @@ export default function Header() {
   const { search, setSearch } = useContextProvider();
 
   return (
-    <ThemeProvider theme={oldwaveTheme}>
       <Box sx={{ flexGrow: 1 }}>
         <StyledAppBar position="static">
           <Toolbar>
@@ -99,6 +96,5 @@ export default function Header() {
           </Toolbar>
         </StyledAppBar>
       </Box>
-    </ThemeProvider>
   );
 }

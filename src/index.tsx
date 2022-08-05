@@ -1,9 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// @ts-ignore
-// import App from "./app/App.tsx";
-// import { ThemeProvider } from "@mui/styles";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/main.css";
 import reportWebVitals from "./reportWebVitals";
 // @ts-ignore
@@ -11,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import AppRoutes from "./app/routing/AppRoutes.tsx";
 // @ts-ignore
 import ContextProvider from "./app/context/contextProvider.tsx";
+import "@fontsource/poppins";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

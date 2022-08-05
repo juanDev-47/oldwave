@@ -6,9 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 // import Typography from "@mui/material/Typography";
-import { Button, ThemeProvider } from "@mui/material";
-// @ts-ignore
-import { oldwaveTheme } from "../../themes/oldwaveTheme.tsx";
+import { Button } from "@mui/material";
 import oldWaveLogo from "../../assets/logo/oldwave-logo-horizontal.png";
 import login2x from "../../assets/icons/login-icon@2x.png";
 import carrito2x from "../../assets/icons/carrito-icon@2x.png";
@@ -34,7 +32,6 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <ThemeProvider theme={oldwaveTheme}>
       <Box sx={{ flexGrow: 1 }}>
         <StyledAppBar position="static">
           <Toolbar>
@@ -56,8 +53,7 @@ export default function Navbar() {
               aria-label="menu"
               sx={{ mr: 2 }}
               onClick={() => {
-                console.log("prbando navigate");
-                navigate("/", { replace: true });
+                navigate("/");
               }}
             >
               <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
@@ -89,6 +85,5 @@ export default function Navbar() {
           </Toolbar>
         </StyledAppBar>
       </Box>
-    </ThemeProvider>
   );
 }
