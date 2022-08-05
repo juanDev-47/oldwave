@@ -14,6 +14,7 @@ import CarouselProduct from "./components/CarouselProduct.tsx";
 // @ts-ignore
 import { useContextProvider } from "../../context/contextProvider.tsx";
 // @ts-ignore
+import Sales from "./components/Sales.tsx";
 import {
   getAllProducts,
   getProductByCategory,
@@ -110,6 +111,7 @@ const Home = () => {
           <Carousel2 />
           <Tittle tittle="¿Qué estás buscando hoy?" />
           <Carousel1 />
+          <Sales />
           <TittleProducts tittle="Productos más recientes" />
           <CarouselProduct allDataCurrent={allDataCurrent} />
         </>

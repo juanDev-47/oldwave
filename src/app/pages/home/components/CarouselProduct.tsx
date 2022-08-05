@@ -26,7 +26,7 @@ const StyledTypography = styled(Typography)`
   width: 80%;
 `;
 
-function CarouselProduct({ allDataCurrent }) {
+function CarouselProduct({ allDataCurrent }): any {
   const navigate = useNavigate();
 
   return (

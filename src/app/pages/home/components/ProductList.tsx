@@ -25,7 +25,7 @@ const StyledTypography = styled(Typography)`
   text-align: center;
 `;
 
-function CarouselProduct({ allDataResults }) {
+function CarouselProduct({ allDataResults }): any {
   const navigate = useNavigate();
   return (
     <Grid
@@ -46,7 +46,7 @@ function CarouselProduct({ allDataResults }) {
           maxWidth="1333px"
           justifyContent="center"
         >
-          {allDataResults.map((item, i) => (
+          {allDataResults.map((item: any, i: React.Key | null | undefined) => (
             <Item key={i} item={item} navigate={navigate} />
           ))}
         </Grid>
@@ -55,7 +55,7 @@ function CarouselProduct({ allDataResults }) {
   );
 }
 
-function Item({ item, navigate }) {
+function Item({ item, navigate}) {
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",
     style: "currency",
