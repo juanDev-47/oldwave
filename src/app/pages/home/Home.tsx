@@ -47,6 +47,8 @@ const Home = () => {
   const onTop = () => {
     window.scrollTo(0, 0);
   }
+  // start on top when change route
+  onTop()
   useEffect(() => {
     onTop()
   }, [routePath]);

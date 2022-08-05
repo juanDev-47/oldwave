@@ -56,6 +56,16 @@ function CarouselProduct({ allDataResults }) {
 }
 
 function Item({ item, navigate }) {
+  let price = new Intl.NumberFormat("es-CO", {
+    currency: "COP",
+    style: "currency",
+    minimumFractionDigits: 0,
+  }).format(parseInt(item.price));
+  let discount = new Intl.NumberFormat("es-CO", {
+    currency: "COP",
+    style: "currency",
+    minimumFractionDigits: 0,
+  }).format(parseInt(item.discount));
   return (
     <Grid
       onClick={() => {
@@ -98,12 +108,12 @@ function Item({ item, navigate }) {
             <StyledTypography
               style={{ textDecoration: "line-through", width: "100%" }}
             >
-              {item.price}
+              {price}
             </StyledTypography>
           </Grid>
           <Grid item xs={6}>
             <StyledTypography style={{ color: "#772CE8", width: "100%" }}>
-              {item.discount}
+              {discount}
             </StyledTypography>
           </Grid>
         </Grid>
