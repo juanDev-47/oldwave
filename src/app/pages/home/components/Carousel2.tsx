@@ -1,8 +1,10 @@
 import React from "react";
-import Carousel from "react-material-ui-carousel";
-import { Paper, Box, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import fridayBanner from "../../../assets/img/banner-blackfriday@2x.png";
 import bannerAux from "../../../assets/img/banner-auxilar-ordenadores@2x.png";
+import "react-multi-carousel/lib/styles.css";
+import "./Carousel1.css";
+import Carousel from "react-multi-carousel";
 
 function Carousel2(props) {
   var items = [
@@ -17,31 +19,56 @@ function Carousel2(props) {
   ];
 
   return (
-    <Grid sx={{ width: "100%" }}>
+    <Grid container sx={{ width: "100%" }}>
       <Carousel
-        index={2}
-        duration={500}
-        animation={"fade"}
-        autoPlay={false}
-        indicatorIconButtonProps={{
-          style: {
-            color: "#000000",
-            backgroundColor: "#C5D3DD",
-            margin: "0 3px",
+        additionalTransfrom={0}
+        arrows
+        autoPlaySpeed={3000}
+        centerMode={false}
+        className="carouselProductClass"
+        containerClass="container"
+        dotListClass=""
+        draggable
+        focusOnSelect={false}
+        infinite
+        itemClass="classItem"
+        keyBoardControl
+        minimumTouchDrag={80}
+        pauseOnHover
+        renderArrowsWhenDisabled={false}
+        renderButtonGroupOutside={false}
+        renderDotsOutside={false}
+        responsive={{
+          desktop: {
+            breakpoint: {
+              max: 3000,
+              min: 1024,
+            },
+            items: 1,
+          },
+          mobile: {
+            breakpoint: {
+              max: 464,
+              min: 0,
+            },
+            items: 1,
+          },
+          tablet: {
+            breakpoint: {
+              max: 1024,
+              min: 464,
+            },
+            items: 1,
           },
         }}
-        activeIndicatorIconButtonProps={{
-          style: {
-            backgroundColor: "#772CE8", // 2
-          },
-        }}
-        indicatorContainerProps={{
-          style: {
-            bottom: "35px",
-            zIndex: "100",
-            position: "relative",
-          },
-        }}
+        rewind={false}
+        rewindWithAnimation={false}
+        rtl={false}
+        shouldResetAutoplay
+        showDots
+        sliderClass=""
+        slidesToSlide={1}
+        swipeable
       >
         {items.map((item, i) => (
           <Item key={i} item={item} />
@@ -53,17 +80,18 @@ function Carousel2(props) {
 
 function Item(props) {
   return (
-    <Paper >
-      <Box
-        component="img"
-        sx={{
-          width: "100%",
-          height: "auto",
-        }}
-        src={props.item.imgPath}
-        alt={props.item.label}
-      />
-    </Paper>
+    <Grid container width="100%">
+      <Grid item={true} width='100%'>
+        <Box
+          component="img"
+          sx={{
+            width: "100%",
+          }}
+          src={props.item.imgPath}
+          alt={props.item.label}
+        />
+      </Grid>
+    </Grid>
   );
 }
 

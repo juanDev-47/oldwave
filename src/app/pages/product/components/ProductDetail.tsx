@@ -48,7 +48,6 @@ const ProductDetail = () => {
         item
         xs={12}
         md={6}
-        sx={{ height: "auto", maxWidth: "100%", objectFit: "cover" }}
       >
         <Carousel
           additionalTransfrom={0}
@@ -218,7 +217,6 @@ const ProductDetail = () => {
 
 function ImageDetail({item}) {
   return (
-  <Grid width="100%">
     <Box
       component="img"
       sx={{
@@ -228,7 +226,6 @@ function ImageDetail({item}) {
       src={`${item.url}`}
       alt={`${item.imageName}`}
     ></Box>
-  </Grid>
   );
 }
 
