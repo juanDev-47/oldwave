@@ -7,7 +7,7 @@ console.log("url from services: ", API_URL);
 export const getAllProducts = async (productName) => {
   try {
     return await axios.get(
-      `http://ec2-54-196-242-176.compute-1.amazonaws.com:5000${endpoints.products.list}`,
+      `${API_URL}${endpoints.products.list}`,
       {
         params: { contract: productName, pageNumber: 1, pageSize: 10 },
       }
@@ -18,9 +18,10 @@ export const getAllProducts = async (productName) => {
 };
 
 export const getProductByCategory = async (categoryId) => {
+  // console.log("categoryId from services: ", categoryId);
   try {
     return await axios.get(
-      `http://ec2-54-196-242-176.compute-1.amazonaws.com:5000${endpoints.products.category}${categoryId}/category`,
+      `${API_URL}${endpoints.products.category}${categoryId}/category`,
       {
         params: { categoryId: categoryId, pageNumber: 1, pageSize: 10 },
       }
@@ -33,7 +34,7 @@ export const getProductByCategory = async (categoryId) => {
 export const getCurrentProducts = async () => {
   try {
     return await axios.get(
-      `http://ec2-54-196-242-176.compute-1.amazonaws.com:5000${endpoints.products.current}`
+      `${API_URL}${endpoints.products.current}`
     );
   } catch (err) {
     console.log(err);

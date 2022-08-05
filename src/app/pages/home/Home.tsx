@@ -51,6 +51,7 @@ const Home = () => {
     onTop()
   }, [routePath]);
 
+  // function for get current products
   const currentProducts = () => {
     setLoading(true);
     getCurrentProducts().then((res) => {
@@ -59,6 +60,7 @@ const Home = () => {
     });
   };
 
+  // function for get products by category
   const productsByCategory = (idCategory) => {
     setLoading(true);
     getProductByCategory(idCategory).then((res) => {
@@ -67,10 +69,12 @@ const Home = () => {
     });
   };
 
+  // effect for get current products
   useEffect(() => {
     currentProducts();
   }, [category]);
 
+  // effect for get products
   useEffect(() => {
     if (search !== "") {
       setContent(false);
@@ -81,11 +85,12 @@ const Home = () => {
     }
   }, [search]);
 
-  // for print categories
+  // effect for get products by category
   useEffect(() => {
     if (category !== "") {
       setContent(false);
       productsByCategory(category);
+      onTop();
     } else if (category === "") {
       setContent(true);
     }

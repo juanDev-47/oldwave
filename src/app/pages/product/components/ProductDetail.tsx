@@ -18,7 +18,7 @@ const StyledTypography = styled(Typography)`
 `;
 
 const ProductDetail = () => {
-  const { setSearch } = useContextProvider();
+  const { setSearch, setCategory } = useContextProvider();
   const location = useLocation();
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",
@@ -39,7 +39,8 @@ const ProductDetail = () => {
   useEffect(() => {
     onTop()
     setSearch("");
-  }, [routePath, setSearch]);
+    setCategory("");
+  }, [routePath, setSearch, setCategory]);
 
   return (
     <Grid container width="100%" marginBottom="15px">
