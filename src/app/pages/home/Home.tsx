@@ -57,6 +57,7 @@ const Home = () => {
   const currentProducts = () => {
     setLoading(true);
     getCurrentProducts().then((res) => {
+      console.log(res.data.data);
       setAllDataCurrent(res.data.data);
       setLoading(false);
     });
@@ -122,6 +123,7 @@ const Home = () => {
           <Typography margin={4} textAlign="center" variant="h5">
             ¡No se han encontrado resultados!
           </Typography>
+          <Carousel1 />
         </>
       )}
     </Layout>
