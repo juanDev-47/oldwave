@@ -63,12 +63,12 @@ const Sales = () => {
         display="flex"
         sx={{
           alignItems: "baseline",
-          flexDirection: { xs: "row-reverse", md: "row" },
+          flexDirection: { xs: "row", md: "row-reverse" },
         }}
         item
         xs={12}
       >
-        <Grid item xs={12} md={6} sx={{ height: { md: "100%" }, flexDirection: {md: 'row-reverse'}, marginBottom: { xs: '20px'} }}>
+        <Grid item xs={12} md={6} sx={{ height: { md: "100%" }, marginBottom: { xs: '20px'} }}>
           <Box
             component="img"
             sx={{
