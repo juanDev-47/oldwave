@@ -1,0 +1,18 @@
+.MuiContainer-root {
+  height: 100vh;
+  max-width: 4000px !important;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 0 !important;
+  height: 45px;
+  border-bottom-right-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+button.MuiButtonBase-root-MuiButton-root {
+  border-radius: 15px !important;
+}

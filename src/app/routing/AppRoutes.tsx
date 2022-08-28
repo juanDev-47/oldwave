@@ -9,6 +9,8 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 // @ts-ignore
 import Home from "../pages/home/Home.tsx";
 // @ts-ignore
+import Login from "../pages/login/Login.tsx";
+// @ts-ignore
 import Product from "../pages/product/Product.tsx";
 // @ts-ignore
 import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
@@ -22,6 +24,7 @@ const AppRoutes: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:name" element={<Product />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>

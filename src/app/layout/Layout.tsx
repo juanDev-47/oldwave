@@ -10,6 +10,8 @@ import WhyUsFooter from "./components/WhyUsFooter.tsx";
 import SubscriptionOldWave from "./components/SubscriptionOldWave.tsx";
 // @ts-ignore
 import Footer from "./components/Footer.tsx";
+// @ts-ignore
+import Cart from "./components/cart/Cart.tsx";
 
 const Layout = ({ children }): any => {
   return (
@@ -17,6 +19,7 @@ const Layout = ({ children }): any => {
       <Grid item xs={12} display={"block"}>
         <Navbar />
         <Header />
+        <Cart />
         {children}
         <WhyUsFooter />
         <SubscriptionOldWave />
