@@ -3,6 +3,7 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
+    entry: path.resolve(__dirname, 'src/app', 'index.js'),
     rules: [
       {
           test: /\.js$/,
