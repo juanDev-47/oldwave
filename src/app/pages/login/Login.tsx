@@ -22,14 +22,13 @@ const Login = () => {
     <Container
       component="main"
       sx={{
+        backgroundColor: { sm: "#000000", md: "#FFFFFF" },
         backgroundImage: { xs: `url(${bglogin})`, md: "none" },
         backgroundSize: { xs: "cover", md: "" },
         backgroundPosition: { xs: "center", md: "" },
-        background: { xs: "" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: "100%",
       }}
     >
       {/* wave1 photo */}
@@ -49,17 +48,19 @@ const Login = () => {
       <Box
         component="div"
         sx={{
-          marginTop: { md: "10%" },
+          marginTop: { md: "5%" },
           paddingTop: { xs: "25%", md: "20px" },
           paddingBottom: { xs: "0", md: "20px" },
           display: "flex",
           flexDirection: "column",
+          flexGrow: 1,
           alignItems: "center",
           width: { xs: "100%", md: "50%" },
           backgroundImage: { xs: "none", md: `url(${bglogin})` },
           backgroundSize: { xs: "cover", md: "" },
           backgroundPosition: { xs: "center", md: "" },
           borderRadius: { xs: "0", md: "10px" },
+          backgroundColor: { md: "white" },
         }}
       >
         <Link href="/">
@@ -134,12 +135,18 @@ const Login = () => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{width: '100%', display: "flex", justifyContent: 'end' }}>
+      <Box
+        sx={{
+          width: "100%",
+          alignItems: "end",
+          display: "flex",
+          justifyContent: "end",
+        }}
+      >
         {/* wave2 photo */}
         <Box
           component="img"
           sx={{
-            
             height: { xs: "150px" },
             width: { xs: "200px" },
           }}
