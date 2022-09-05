@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 //@ts-ignore
 import { useContextProvider } from "../../../../context/contextProvider.tsx";
 
 function useCart(product) {
   const { cart, setCart } = useContextProvider();
+
+  useEffect(() => {
+    if(cart?.length > 0) {
+      localStorage.setItem('items', JSON.stringify(cart));
+    }
+  }, [cart]);
 
   const addToCart = () => {
     const exist = cart.find((x) => x.id === product.id);
@@ -15,30 +22,24 @@ function useCart(product) {
     } else {
       setCart([...cart, { ...product, cantidad: 1 }]);
     }
-
-    // cart.findIndex((c) => c.id === product.id)
-    //   ? setCart(cart.filter((c) => c.id !== product.id))
-    //   : setCart((c) => [...cart, product]);
-    // const newCart = [...cart, product];
-    // setCart(newCart);
   };
 
   const removeFromCart = (item) => {
     setCart(cart.filter((c) => c.id !== item.id));
   };
 
-  const increase = () => {
+  const increase = (item) => {
     setCart(
       cart.map((x) =>
-        x.id === product.id ? { ...x, cantidad: x.cantidad + 1 } : x
+        x.id === item.id ? { ...x, cantidad: x.cantidad + 1 } : x
       )
     );
   };
 
-  const decrease = () => {
+  const decrease = (item) => {
     setCart(
       cart.map((x) =>
-        x.id === product.id
+        x.id === item.id
           ? {
               ...x,
               cantidad: x.cantidad > 1 ? x.cantidad - 1 : 1,
@@ -48,12 +49,7 @@ function useCart(product) {
     );
   };
 
-  const addToCartText =
-    cart.findIndex((c) => c.id === product.id) >= 0
-      ? "Remove from cart"
-      : "Add to cart";
-
-  return { addToCart, addToCartText, removeFromCart, increase, decrease };
+  return { addToCart, removeFromCart, increase, decrease };
 }
 
 export default useCart;

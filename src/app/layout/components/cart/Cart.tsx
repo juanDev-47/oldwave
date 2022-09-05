@@ -9,13 +9,15 @@ import {
   Paper,
   styled,
   Typography,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 // @ts-ignore
 import { useContextProvider } from "../../../context/contextProvider.tsx";
-import { Close } from "@mui/icons-material";
+import {
+  Close,
+  ArrowCircleLeftSharp,
+  ArrowCircleRightSharp,
+} from "@mui/icons-material";
 import "./cart.css";
 // @ts-ignore
 import useCart from "./services/useCart.ts";
@@ -27,10 +29,22 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const Cart = () => {
-  const { cart, setShowCart, showCart } = useContextProvider();
+  const { cart, setShowCart, showCart, setCart } = useContextProvider();
   const [totalPrice, setTotalPrice] = useState(0);
-  const theme = useTheme();
-  const { removeFromCart } = useCart(cart);
+  const { removeFromCart, increase, decrease } = useCart(cart);
+
+  useEffect(() => {
+    console.log("probando antes del localstorage");
+    try {
+      const cartItems = JSON.parse(localStorage.getItem("items"));
+      console.log("probando despues del localstorage", cartItems);
+      if (cartItems) {
+        setCart(cartItems);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     let total = 0;
@@ -83,11 +97,34 @@ const Cart = () => {
         alignItems={"start"}
         sx={{ pt: 2, pb: 2 }}
       >
-        <Typography variant="h6" sx={{ fontSize: 14 }}>
-          Cantidad: {item.cantidad}
-        </Typography>
+        <Box display={"flex"}>
+          <IconButton
+            onClick={() => {
+              decrease(item);
+            }}
+            aria-label="delete"
+          >
+            <ArrowCircleLeftSharp />
+          </IconButton>
+          <Typography sx={{ fontSize: 14, margin: "10px 10px 0 10px" }}>
+            {item.cantidad}
+          </Typography>
+          <IconButton
+            onClick={() => {
+              increase(item);
+            }}
+            aria-label="delete"
+          >
+            <ArrowCircleRightSharp />
+          </IconButton>
+        </Box>
         <Typography variant="h6" justifyContent={"end"} sx={{ fontSize: 14 }}>
-          SubTotal: {item.discount * item.cantidad}
+          SubTotal:{" "}
+          {new Intl.NumberFormat("es-CO", {
+            currency: "COP",
+            style: "currency",
+            minimumFractionDigits: 0,
+          }).format(item.discount * item.cantidad)}
         </Typography>
       </Box>
       <Divider variant="fullWidth" />
@@ -100,7 +137,10 @@ const Cart = () => {
         open={showCart}
         onClose={() => setShowCart(false)}
         anchor="right"
-        PaperProps={{ sx: { width: "400px", borderRadius: 2 } }}
+        PaperProps={{
+          sx: { width: "400px", borderRadius: 2 },
+          md: { width: "500px" },
+        }}
       >
         {cart && cart.length > 0 ? (
           <>

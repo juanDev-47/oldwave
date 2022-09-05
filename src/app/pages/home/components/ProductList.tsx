@@ -60,7 +60,7 @@ function CarouselProduct({ allDataResults }): any {
 
 function Item({ item, navigate}) {
 
-  const { addToCart, addToCartText } = useCart(item);
+  const { addToCart } = useCart(item);
 
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",

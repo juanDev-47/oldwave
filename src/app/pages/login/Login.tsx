@@ -93,11 +93,11 @@ const Login = () => {
             />
 
             <TextField
+              type="email"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
               name="email"
             />
           </Box>
@@ -120,7 +120,6 @@ const Login = () => {
               required
               fullWidth
               name="password"
-              label="Password"
               type="password"
               id="password"
             />
