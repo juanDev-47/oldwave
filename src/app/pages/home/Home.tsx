@@ -37,7 +37,6 @@ const Home = () => {
   const products = (search) => {
     setLoading(true);
     getAllProducts(search).then((res) => {
-      console.table(res);
       setAllDataResults(res.data.data);
       setLoading(false);
     });
@@ -58,7 +57,6 @@ const Home = () => {
   const currentProducts = () => {
     setLoading(true);
     getCurrentProducts().then((res) => {
-      console.log(res.data.data);
       setAllDataCurrent(res.data.data);
       setLoading(false);
     });
@@ -82,7 +80,7 @@ const Home = () => {
   useEffect(() => {
     if (search !== "") {
       setContent(false);
-      onTop();
+      // onTop();
       products(search);
     } else if (search === "") {
       setContent(true);

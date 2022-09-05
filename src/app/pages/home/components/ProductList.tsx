@@ -3,6 +3,8 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import "./Carousel1.css";
 import { useNavigate } from "react-router-dom";
+// @ts-ignore
+import useCart from "../../../layout/components/cart/services/useCart.ts";
 
 const StyledButtonVar = styled(Button)(({ theme }) => ({
   color: "#FFFFFF",
@@ -27,6 +29,7 @@ const StyledTypography = styled(Typography)`
 
 function CarouselProduct({ allDataResults }): any {
   const navigate = useNavigate();
+
   return (
     <Grid
       container
@@ -56,6 +59,9 @@ function CarouselProduct({ allDataResults }): any {
 }
 
 function Item({ item, navigate}) {
+
+  const { addToCart, addToCartText } = useCart(item);
+
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",
     style: "currency",
@@ -118,7 +124,11 @@ function Item({ item, navigate}) {
           </Grid>
         </Grid>
         <Grid container justifyContent="center">
-          <StyledButtonVar>Agregar al carrito</StyledButtonVar>
+          <StyledButtonVar onClick={(e) => { 
+            e.preventDefault();
+            e.stopPropagation();
+            addToCart()
+             }}>Agregar al carrito</StyledButtonVar>
         </Grid>
       </Grid>
     </Grid>
@@ -126,3 +136,4 @@ function Item({ item, navigate}) {
 }
 
 export default CarouselProduct;
+

@@ -8,12 +8,13 @@ import AppRoutes from "./app/routing/AppRoutes.tsx";
 // @ts-ignore
 import ContextProvider from "./app/context/contextProvider.tsx";
 import "@fontsource/poppins";
+//@ts-ignore
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ContextProvider>
-      <AppRoutes />
+        <AppRoutes />
     </ContextProvider>
   </React.StrictMode>
 );
