@@ -1,10 +1,16 @@
 import { Box, Button, Container, Link, TextField } from "@mui/material";
 import React from "react";
+// @ts-ignore
 import bglogin from "../../assets/icons/bglogin.png";
+// @ts-ignore
 import user from "../../assets/icons/login-icon.png";
+// @ts-ignore
 import passicon from "../../assets/icons/passicon.png";
+// @ts-ignore
 import ola1 from "../../assets/icons/ola1.png";
+// @ts-ignore
 import ola2 from "../../assets/icons/ola2.png";
+// @ts-ignore
 import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
 

@@ -1,11 +1,24 @@
-import { Grid, Typography, Box, styled, IconButton } from "@mui/material";
-import React, { useEffect } from "react";
+import {
+  Grid,
+  Typography,
+  Box,
+  styled,
+  IconButton,
+  Button,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../../home/components/Carousel1.css";
 // @ts-ignore
 import { useContextProvider } from "../../../context/contextProvider.tsx";
+// @ts-ignore
+import useCart from "../../../layout/components/cart/services/useCart.ts";
+import {
+  ArrowCircleLeftSharp,
+  ArrowCircleRightSharp,
+} from "@mui/icons-material";
 
 const StyledTypography = styled(Typography)`
   font-size: 14px;
@@ -18,8 +31,17 @@ const StyledTypography = styled(Typography)`
 `;
 
 const ProductDetail = () => {
-  const { setSearch, setCategory } = useContextProvider();
+  const { setSearch, setCategory, cart } = useContextProvider();
   const location = useLocation();
+  const [addCart, setAddCart] = useState(false);
+  const [index, setIndex] = useState();
+
+  useEffect(() => {
+    setIndex(
+      cart.findIndex((item: { id: any }) => item.id === location.state.id)
+    );
+  }, [cart]);
+
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",
     style: "currency",
@@ -35,20 +57,18 @@ const ProductDetail = () => {
   const routePath = useLocation();
   const onTop = () => {
     window.scrollTo(0, 0);
-  }
+  };
   useEffect(() => {
-    onTop()
+    onTop();
     setSearch("");
     setCategory("");
   }, [routePath, setSearch, setCategory]);
 
+  const { increase, decrease, addToCart } = useCart(location.state);
+
   return (
     <Grid container width="100%" marginBottom="15px">
-      <Grid
-        item
-        xs={12}
-        md={6}
-      >
+      <Grid item xs={12} md={6}>
         <Carousel
           additionalTransfrom={0}
           arrows
@@ -102,7 +122,7 @@ const ProductDetail = () => {
           {location.state.images.map((item, i) => (
             <ImageDetail key={i} item={item} />
           ))}
-        </Carousel> 
+        </Carousel>
       </Grid>
       <Grid item xs={12} md={6} sx={{ padding: { xs: "15px", md: "20px" } }}>
         <StyledTypography
@@ -207,15 +227,62 @@ const ProductDetail = () => {
             color="inherit"
             aria-label="menu"
           >
-            <img src={location.state.seller.logo} alt="location.name" />
+            <img src={location.state.seller.logo} alt="Foto" />
           </IconButton>
+        </Grid>
+        <Grid container sx={{ display: "flex" }}>
+          <Box display={"flex"} flexDirection="column">
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#772CE8",
+                color: "white",
+                width: "100%",
+                height: "30px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                marginTop: "10px",
+              }}
+              onClick={() => {
+                setAddCart(true);
+                addToCart(location.state);
+              }}
+            >
+              Agregar al carrito
+            </Button>
+            {addCart && (
+              <>
+                <Box display={'flex'} justifyContent={'center'} >
+                  <IconButton
+                    onClick={() => {
+                      decrease(location.state);
+                    }}
+                    aria-label="delete"
+                  >
+                    <ArrowCircleLeftSharp />
+                  </IconButton>
+                  <Typography sx={{ fontSize: 14, margin: "10px 10px 0 10px" }}>
+                    {!cart[index] ? 1 : cart[index].cantidad}
+                  </Typography>
+                  <IconButton
+                    onClick={() => {
+                      increase(location.state);
+                    }}
+                    aria-label="delete"
+                  >
+                    <ArrowCircleRightSharp />
+                  </IconButton>
+                </Box>
+              </>
+            )}
+          </Box>
         </Grid>
       </Grid>
     </Grid>
   );
 };
 
-function ImageDetail({item}) {
+function ImageDetail({ item }) {
   return (
     <Box
       component="img"

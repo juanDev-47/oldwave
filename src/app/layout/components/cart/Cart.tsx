@@ -31,20 +31,7 @@ const StyledDrawer = styled(Drawer)`
 const Cart = () => {
   const { cart, setShowCart, showCart, setCart } = useContextProvider();
   const [totalPrice, setTotalPrice] = useState(0);
-  const { removeFromCart, increase, decrease } = useCart(cart);
-
-  useEffect(() => {
-    console.log("probando antes del localstorage");
-    try {
-      const cartItems = JSON.parse(localStorage.getItem("items"));
-      console.log("probando despues del localstorage", cartItems);
-      if (cartItems) {
-        setCart(cartItems);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const { removeFromCart, increase, decrease, buildDTO } = useCart(cart);
 
   useEffect(() => {
     let total = 0;
@@ -138,8 +125,7 @@ const Cart = () => {
         onClose={() => setShowCart(false)}
         anchor="right"
         PaperProps={{
-          sx: { width: "400px", borderRadius: 2 },
-          md: { width: "500px" },
+          sx: { width: { xs: "400px", md: "500px"}, borderRadius: 2 }
         }}
       >
         {cart && cart.length > 0 ? (
@@ -181,7 +167,7 @@ const Cart = () => {
                 variant="contained"
                 sx={{ mt: 2, mb: 2, width: "80%" }}
                 onClick={() => {
-                  setShowCart(false);
+                  buildDTO();
                 }}
               >
                 Procesar compra

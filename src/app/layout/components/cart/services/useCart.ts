@@ -1,13 +1,26 @@
 import { useEffect } from "react";
 //@ts-ignore
 import { useContextProvider } from "../../../../context/contextProvider.tsx";
+// @ts-ignore
+import { sendCartInfo } from "./cartServices.ts";
 
 function useCart(product) {
   const { cart, setCart } = useContextProvider();
 
   useEffect(() => {
-    if(cart?.length > 0) {
-      localStorage.setItem('items', JSON.stringify(cart));
+    try {
+      const cartItems = JSON.parse(localStorage.getItem("items") || "[]");
+      if (cartItems) {
+        setCart(cartItems);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem("items", JSON.stringify(cart));
     }
   }, [cart]);
 
@@ -26,6 +39,9 @@ function useCart(product) {
 
   const removeFromCart = (item) => {
     setCart(cart.filter((c) => c.id !== item.id));
+    if (cart.length === 0) {
+      localStorage.removeItem("items");
+    }
   };
 
   const increase = (item) => {
@@ -49,7 +65,48 @@ function useCart(product) {
     );
   };
 
-  return { addToCart, removeFromCart, increase, decrease };
+  const buildDTO = () => {
+    const dto: any = {
+      orderItems: [],
+    };
+    let total = 0;
+    cart.forEach((item) => {
+      total += item.cantidad * item.discount;
+      dto.orderItems.push({
+        productName: item.name,
+        price: item.price,
+        discount: item.discount,
+        quantity: item.cantidad,
+        total: item.discount * item.cantidad,
+        imageName: item.images[0].url,
+  
+      });
+    });
+    dto.total = total;
+    dto.address = "Calle 1 # 2 - 3";
+    dto.userId = 1;
+    
+    const res = sendCartInfo(dto);
+    processResponse(res);
+
+  };
+
+  const processResponse = (res) => {
+    console.log("response from service: ", res);
+    if(res.status === '405') {
+      alert("No se pudo procesar la orden");
+    } else {
+      alert("Orden procesada con éxito");
+      clearCart();
+    }
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("items");
+  };
+
+  return { addToCart, removeFromCart, increase, decrease, buildDTO };
 }
 
 export default useCart;

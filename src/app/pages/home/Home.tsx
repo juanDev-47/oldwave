@@ -15,6 +15,7 @@ import CarouselProduct from "./components/CarouselProduct.tsx";
 import { useContextProvider } from "../../context/contextProvider.tsx";
 // @ts-ignore
 import Sales from "./components/Sales.tsx";
+// @ts-ignore
 import {
   getAllProducts,
   getProductByCategory,
