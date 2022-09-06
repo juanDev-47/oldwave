@@ -1,10 +1,16 @@
 import { Box, Button, Container, Link, TextField } from "@mui/material";
 import React from "react";
+// @ts-ignore
 import bglogin from "../../assets/icons/bglogin.png";
+// @ts-ignore
 import user from "../../assets/icons/login-icon.png";
+// @ts-ignore
 import passicon from "../../assets/icons/passicon.png";
+// @ts-ignore
 import ola1 from "../../assets/icons/ola1.png";
+// @ts-ignore
 import ola2 from "../../assets/icons/ola2.png";
+// @ts-ignore
 import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
 
@@ -22,14 +28,13 @@ const Login = () => {
     <Container
       component="main"
       sx={{
+        backgroundColor: { sm: "#000000", md: "#FFFFFF" },
         backgroundImage: { xs: `url(${bglogin})`, md: "none" },
         backgroundSize: { xs: "cover", md: "" },
         backgroundPosition: { xs: "center", md: "" },
-        background: { xs: "" },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        height: "100%",
       }}
     >
       {/* wave1 photo */}
@@ -49,17 +54,19 @@ const Login = () => {
       <Box
         component="div"
         sx={{
-          marginTop: { md: "10%" },
+          marginTop: { md: "5%" },
           paddingTop: { xs: "25%", md: "20px" },
           paddingBottom: { xs: "0", md: "20px" },
           display: "flex",
           flexDirection: "column",
+          flexGrow: 1,
           alignItems: "center",
           width: { xs: "100%", md: "50%" },
           backgroundImage: { xs: "none", md: `url(${bglogin})` },
           backgroundSize: { xs: "cover", md: "" },
           backgroundPosition: { xs: "center", md: "" },
           borderRadius: { xs: "0", md: "10px" },
+          backgroundColor: { md: "white" },
         }}
       >
         <Link href="/">
@@ -92,11 +99,11 @@ const Login = () => {
             />
 
             <TextField
+              type="email"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
               name="email"
             />
           </Box>
@@ -119,7 +126,6 @@ const Login = () => {
               required
               fullWidth
               name="password"
-              label="Password"
               type="password"
               id="password"
             />
@@ -134,12 +140,18 @@ const Login = () => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{width: '100%', display: "flex", justifyContent: 'end' }}>
+      <Box
+        sx={{
+          width: "100%",
+          alignItems: "end",
+          display: "flex",
+          justifyContent: "end",
+        }}
+      >
         {/* wave2 photo */}
         <Box
           component="img"
           sx={{
-            
             height: { xs: "150px" },
             width: { xs: "200px" },
           }}

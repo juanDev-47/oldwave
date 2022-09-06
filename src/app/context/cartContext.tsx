@@ -5,7 +5,7 @@ export const UIContext = createContext({
   setDrawerOpen: (any) => {},
   showSearchBox: false,
   setShowSearchBox: (any) => {},
-  cart: {},
+  cart: [],
   setCart: (any) => {},
   showCart: false,
   setShowCart: (any) => {},

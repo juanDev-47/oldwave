@@ -7,10 +7,15 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 // import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
+// @ts-ignore
 import oldWaveLogo from "../../assets/logo/oldwave-logo-horizontal.png";
+// @ts-ignore
 import login2x from "../../assets/icons/login-icon@2x.png";
+// @ts-ignore
 import carrito2x from "../../assets/icons/carrito-icon@2x.png";
 import { useNavigate } from "react-router-dom";
+//@ts-ignore
+import { useContextProvider } from "../../context/contextProvider.tsx";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "#FFFFFF",
@@ -30,6 +35,8 @@ const StyledButtonBar = styled(Button)(({ theme }) => ({
 
 export default function Navbar() {
   const navigate = useNavigate();
+
+  const { setShowCart } = useContextProvider();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -87,6 +94,9 @@ export default function Navbar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => {
+              setShowCart(true);
+            }}
           >
             <img src={carrito2x} className="h-6" alt="oldWaveCar" />
           </IconButton>
