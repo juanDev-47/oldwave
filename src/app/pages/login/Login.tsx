@@ -13,15 +13,18 @@ import ola2 from "../../assets/icons/ola2.png";
 // @ts-ignore
 import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
+// @ts-ignore
+import { login } from "./services/services.ts";
 
 const Login = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const DTO = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+    login(DTO);
   };
 
   return (
