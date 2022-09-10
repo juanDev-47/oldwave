@@ -84,15 +84,15 @@ function useCart(product) {
     });
     dto.total = total;
     dto.address = "Calle 1 # 2 - 3";
-    dto.userId = 1;
+    dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
     
+    console.log(dto);
     const res = sendCartInfo(dto);
     processResponse(res);
 
   };
 
   const processResponse = (res) => {
-    console.log("response from service: ", res);
     if(res.status === '405') {
       alert("No se pudo procesar la orden");
     } else {

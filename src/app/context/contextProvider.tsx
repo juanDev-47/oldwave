@@ -12,6 +12,8 @@ export const Context = createContext({
   showSearchBox: false,
   setShowSearchBox: (any) => {},
   cart: [],
+  session: {},
+  setSession: (any) => {},
   setCart: (any) => {},
   showCart: false,
   setShowCart: (any) => {},
@@ -25,10 +27,13 @@ const ContextProvider = ({ children }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [session, setSession] = useState({});
 
   return (
     <Context.Provider
       value={{
+        session,
+        setSession,
         search,
         setSearch,
         category,

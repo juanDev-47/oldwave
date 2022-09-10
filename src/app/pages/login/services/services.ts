@@ -6,9 +6,10 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const login = async (credentials) => {
   console.log("credentials from services: ", credentials);
   try {
-    return await axios.post(
+    const response = await axios.post(
       `${API_URL}${endpoints.products.login}`,credentials
     );
+    return response.data;
   } catch (err) {
     console.log(err);
   }
