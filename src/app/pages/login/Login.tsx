@@ -1,4 +1,4 @@
-import { Box, Button, Container, Link, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import React from "react";
 // @ts-ignore
 import bglogin from "../../assets/icons/bglogin.png";
@@ -15,8 +15,14 @@ import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
 // @ts-ignore
 import { loginToSend } from "./services/loginServices.ts";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = React.useState({
+    username: "",
+    password: "",
+  });
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,7 +30,9 @@ const Login = () => {
       userName: data.get("email"),
       password: data.get("password"),
     };
-    loginToSend(DTO);
+    if (DTO.userName && DTO.password) {
+      loginToSend(DTO);
+    }
   };
 
   return (
@@ -72,7 +80,7 @@ const Login = () => {
           backgroundColor: { md: "white" },
         }}
       >
-        <Link href="/">
+        <Link to={"/"}>
           <Box
             component="img"
             sx={{
@@ -85,6 +93,7 @@ const Login = () => {
             alt="OldWave"
           />
         </Link>
+
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box
@@ -105,6 +114,7 @@ const Login = () => {
               type="email"
               margin="normal"
               required
+              onChange={(e) => setEmail({ ...email, username: e.target.value })}
               fullWidth
               id="email"
               name="email"
@@ -128,19 +138,24 @@ const Login = () => {
               margin="normal"
               required
               fullWidth
+              onChange={(e) => setEmail({ ...email, password: e.target.value })}
               name="password"
               type="password"
               id="password"
             />
           </Box>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Ingresar
-          </Button>
+          {email.username && email.password ? (
+            <Link to={"/"}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Ingresar
+              </Button>
+            </Link>
+          ) : null}
         </Box>
       </Box>
       <Box

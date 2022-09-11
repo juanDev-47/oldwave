@@ -29,7 +29,7 @@ const StyledDrawer = styled(Drawer)`
 `;
 
 const Cart = () => {
-  const { cart, setShowCart, showCart, setCart } = useContextProvider();
+  const { cart, setShowCart, showCart } = useContextProvider();
   const [totalPrice, setTotalPrice] = useState(0);
   const { removeFromCart, increase, decrease, buildDTO } = useCart(cart);
 

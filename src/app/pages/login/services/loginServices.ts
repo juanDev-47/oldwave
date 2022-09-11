@@ -1,6 +1,6 @@
 // @ts-ignore
-import { Link } from "react-router-dom";
 import { login } from "./services.ts";
+
 
 export const loginToSend = async (credentials) => {
   const sessionData = await login(credentials);

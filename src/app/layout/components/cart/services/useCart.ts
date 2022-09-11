@@ -84,9 +84,12 @@ function useCart(product) {
     });
     dto.total = total;
     dto.address = "Calle 1 # 2 - 3";
-    dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
+    dto.userId = 'a66de13d-c13f-4700-b489-7c27244addee';
+    // id del usuario carlos
+    // dto.userId = 'ad4d41d2-085d-4da7-acaf-af4af4f52f86';
+    // id del usuario juan
+    // dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
     
-    console.log(dto);
     const res = sendCartInfo(dto);
     processResponse(res);
 
