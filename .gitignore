@@ -10,7 +10,15 @@ bower_components
 
 *.sublime*
 
+# testing
+/coverage
+
 psd
 thumb
 sketch
 build
+
+## cypress
+cypress/screenshots
+cypress/videos
+.nyc_output
