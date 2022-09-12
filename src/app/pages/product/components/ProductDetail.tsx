@@ -30,9 +30,10 @@ const StyledTypography = styled(Typography)`
   }
 `;
 
+
 const ProductDetail = () => {
   const { setSearch, setCategory, cart } = useContextProvider();
-  const location = useLocation();
+  const location:any = useLocation();
   const [addCart, setAddCart] = useState(false);
   const [index, setIndex] = useState();
 
@@ -252,7 +253,7 @@ const ProductDetail = () => {
             </Button>
             {addCart && (
               <>
-                <Box display={'flex'} justifyContent={'center'} >
+                <Box display={"flex"} justifyContent={"center"}>
                   <IconButton
                     onClick={() => {
                       decrease(location.state);

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "cypress",
+      "node"
+    ],
+    "baseUrl": "src",
+    "paths": {
+      "*": ["src/*"]
+    }
+  },
+}

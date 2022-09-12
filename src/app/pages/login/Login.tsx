@@ -22,7 +22,7 @@ import { useContextProvider } from "../../context/contextProvider.tsx";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setSession, session } = useContextProvider();
+  const { setSession} = useContextProvider();
   const [email, setEmail] = React.useState({
     username: "",
     password: "",
@@ -37,9 +37,10 @@ const Login = () => {
     };
     const dataLogin = loginToSend(DTO);
     dataLogin.then((res) => {
-      setSession(res);
+      console.log(res);
       if (res.message === "Ok") {
-        swal(`Bienvenido ${session?.user?.userName} `, "Has iniciado sesión correctamente", "success");
+        setSession(res);
+        swal(`Bienvenido ${res?.user?.userName} `, "Has iniciado sesión correctamente", "success");
         navigate("/home");
       } else {
         swal("Error", "Usuario o contraseña incorrectos", "error");
