@@ -40,7 +40,7 @@ const ProductDetail = () => {
     setIndex(
       cart.findIndex((item: { id: any }) => item.id === location.state.id)
     );
-  }, [cart]);
+  }, [cart, location.state.id]);
 
   let price = new Intl.NumberFormat("es-CO", {
     currency: "COP",

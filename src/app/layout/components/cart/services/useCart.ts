@@ -6,7 +6,7 @@ import { sendCartInfo } from "./cartServices.ts";
 import swal from "sweetalert";
 
 function useCart(product) {
-  const { cart, setCart, session, setSession } = useContextProvider();
+  const { cart, setCart, session } = useContextProvider();
 
   useEffect(() => {
     try {
@@ -17,7 +17,7 @@ function useCart(product) {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [setCart]);
 
   useEffect(() => {
     if (cart.length > 0) {
