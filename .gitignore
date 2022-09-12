@@ -21,4 +21,5 @@ build
 ## cypress
 cypress/screenshots
 cypress/videos
+cypress/support
 .nyc_output
