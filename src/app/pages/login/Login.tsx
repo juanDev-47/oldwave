@@ -39,7 +39,7 @@ const Login = () => {
     dataLogin.then((res) => {
       setSession(res);
       if (res.message === "Ok") {
-        swal(`Bienvenido `, "Has iniciado sesión correctamente", "success");
+        swal(`Bienvenido ${session?.user?.userName} `, "Has iniciado sesión correctamente", "success");
         navigate("/home");
       } else {
         swal("Error", "Usuario o contraseña incorrectos", "error");
