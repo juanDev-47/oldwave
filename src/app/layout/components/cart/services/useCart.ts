@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useContextProvider } from "../../../../context/contextProvider.tsx";
 // @ts-ignore
 import { sendCartInfo } from "./cartServices.ts";
+import swal from "sweetalert";
 
 function useCart(product) {
-  const { cart, setCart } = useContextProvider();
+  const { cart, setCart, session } = useContextProvider();
 
   useEffect(() => {
     try {
@@ -84,11 +85,12 @@ function useCart(product) {
     });
     dto.total = total;
     dto.address = "Calle 1 # 2 - 3";
-    dto.userId = 'a66de13d-c13f-4700-b489-7c27244addee';
+    // id del usuario juan
+    dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
+    // id del usuario agudelo
+    // dto.userId = 'a66de13d-c13f-4700-b489-7c27244addee';
     // id del usuario carlos
     // dto.userId = 'ad4d41d2-085d-4da7-acaf-af4af4f52f86';
-    // id del usuario juan
-    // dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
     
     const res = sendCartInfo(dto);
     processResponse(res);
@@ -97,9 +99,9 @@ function useCart(product) {
 
   const processResponse = (res) => {
     if(res.status === '405') {
-      alert("No se pudo procesar la orden");
+      swal("Error", "Se ha presentado un error en el envio, intente nuevamente!", "success");
     } else {
-      alert("Orden procesada con éxito");
+      swal("Orden enviada", "Se ha enviado correctamente!", "success");
       clearCart();
     }
   };

@@ -15,9 +15,11 @@ import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
 // @ts-ignore
 import { loginToSend } from "./services/loginServices.ts";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = React.useState({
     username: "",
     password: "",
@@ -30,9 +32,16 @@ const Login = () => {
       userName: data.get("email"),
       password: data.get("password"),
     };
-    if (DTO.userName && DTO.password) {
-      loginToSend(DTO);
-    }
+    const dataLogin = loginToSend(DTO);
+    dataLogin.then((res) => {
+      if (res.message === 'Ok') {
+        swal("Bienvenido", "Has iniciado sesión correctamente", "success");
+        navigate("/home");
+      } else {
+        swal("Error", "Usuario o contraseña incorrectos", "error");
+        navigate("/home");
+      }
+    });
   };
 
   return (
@@ -145,16 +154,14 @@ const Login = () => {
             />
           </Box>
           {email.username && email.password ? (
-            <Link to={"/"}>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Ingresar
-              </Button>
-            </Link>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Ingresar
+            </Button>
           ) : null}
         </Box>
       </Box>
