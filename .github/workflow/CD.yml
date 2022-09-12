@@ -1,4 +1,4 @@
-name: CD-oldwave
+name: pipeline-oldwave-CD
 
 on:
   pull_request:
