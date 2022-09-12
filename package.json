@@ -36,7 +36,9 @@
     "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css"
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "start-test": "NODE_ENV=test react-scripts start",
+    "test:e2e": "npx cypress run"
   },
   "eslintConfig": {
     "extends": [

@@ -4,7 +4,9 @@ import { login } from "./services.ts";
 
 export const loginToSend = async (credentials) => {
   const sessionData = await login(credentials);
-    setSessionData(sessionData);
+    if(sessionData.message === "Ok"){
+      setSessionData(sessionData);
+    }
 
   return sessionData;
     
