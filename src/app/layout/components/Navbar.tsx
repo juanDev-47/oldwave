@@ -36,7 +36,7 @@ const StyledButtonBar = styled(Button)(({ theme }) => ({
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const { setShowCart, session, setSession, setCart } = useContextProvider();
+  const { setShowCart, session, setSession } = useContextProvider();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
