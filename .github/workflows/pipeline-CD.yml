@@ -10,8 +10,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo message
-        run: echo "hello from git action"
-      - name: Dime la fecha
-        run: date
-      - run: ls -l
+      - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
