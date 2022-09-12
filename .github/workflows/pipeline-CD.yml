@@ -1,0 +1,17 @@
+name: pipeline-oldwave-CD
+
+on:
+  pull_request:
+    branches: [ main ]
+  
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo message
+        run: echo "hello from git action"
+      - name: Dime la fecha
+        run: date
+      - run: ls -l
