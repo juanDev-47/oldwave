@@ -6,7 +6,7 @@ import { sendCartInfo } from "./cartServices.ts";
 import swal from "sweetalert";
 
 function useCart(product) {
-  const { cart, setCart, session } = useContextProvider();
+  const { cart, setCart, session, setSession } = useContextProvider();
 
   useEffect(() => {
     try {
@@ -67,42 +67,49 @@ function useCart(product) {
   };
 
   const buildDTO = () => {
-    const dto: any = {
-      orderItems: [],
-    };
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.cantidad * item.discount;
-      dto.orderItems.push({
-        productName: item.name,
-        price: item.price,
-        discount: item.discount,
-        quantity: item.cantidad,
-        total: item.discount * item.cantidad,
-        imageName: item.images[0].url,
-  
+    try {
+      const dto: any = {
+        orderItems: [],
+      };
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.cantidad * item.discount;
+        dto.orderItems.push({
+          productName: item.name,
+          price: item.price,
+          discount: item.discount,
+          quantity: item.cantidad,
+          total: item.discount * item.cantidad,
+          imageName: item.images[0].url,
+        });
       });
-    });
-    dto.total = total;
-    dto.address = "Calle 1 # 2 - 3";
-    // id del usuario juan
-    dto.userId = '26d9be06-fa3c-47d0-a868-aec6e1f0a1d7';
-    // id del usuario agudelo
-    // dto.userId = 'a66de13d-c13f-4700-b489-7c27244addee';
-    // id del usuario carlos
-    // dto.userId = 'ad4d41d2-085d-4da7-acaf-af4af4f52f86';
-    
-    const res = sendCartInfo(dto);
-    processResponse(res);
+      dto.total = total;
+      dto.address = session.user.address;
+      dto.userId = session.user.id;
 
-  };
-
-  const processResponse = (res) => {
-    if(res.status === '405') {
-      swal("Error", "Se ha presentado un error en el envio, intente nuevamente!", "success");
-    } else {
-      swal("Orden enviada", "Se ha enviado correctamente!", "success");
-      clearCart();
+      const res = sendCartInfo(dto);
+      res.then((res) => {
+        if (res.status === 200) {
+          swal(
+            "Compra realizada con exito",
+            "Se ha enviado correctamente!",
+            "success"
+          );
+          clearCart();
+        } else {
+          swal(
+            "Error al realizar la compra",
+            "Se ha presentado un error en el envio, intente nuevamente!",
+            "error"
+          );
+        }
+      });
+    } catch (error) {
+      swal(
+        "Error al realizar la compra",
+        "Debe iniciar sesion para realizar la compra!",
+        "error"
+      );
     }
   };
 

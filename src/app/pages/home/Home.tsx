@@ -24,7 +24,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Box, Typography } from "@mui/material";
 
 const Home = () => {
-  const { search, category, session } = useContextProvider();
+  const { search, category} = useContextProvider();
 
   const [allDataResults, setAllDataResults] = useState([]);
   const [allDataCurrent, setAllDataCurrent] = useState([]);

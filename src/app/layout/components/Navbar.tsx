@@ -36,7 +36,7 @@ const StyledButtonBar = styled(Button)(({ theme }) => ({
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const { setShowCart } = useContextProvider();
+  const { setShowCart, session, setSession, setCart } = useContextProvider();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -66,28 +66,69 @@ export default function Navbar() {
             <img src={oldWaveLogo} className="h-6 w-24" alt="oldWave" />
           </IconButton>
           <div className="flex-grow"></div>
-          <Box sx={{ display: { md: "block", xs: "none" } }}>
-            <StyledButtonBar
+
+          {session?.message !== "Ok" ? (
+            <Box sx={{ display: { md: "block", xs: "none" } }}>
+              <StyledButtonBar
+                onClick={() => {
+                  navigate("/login");
+                }}
+                color="inherit"
+              >
+                Registrate o inicia sesión
+              </StyledButtonBar>
+            </Box>
+          ) : (
+            <>
+              <Box sx={{ display: { md: "block", xs: "none" } }}>
+                <StyledButtonBar
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  color="inherit"
+                >
+                  Hola {session?.user?.userName}!!
+                </StyledButtonBar>
+              </Box>
+              <Box sx={{ display: { md: "block", xs: "none" } }}>
+                <StyledButtonBar
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  color="inherit"
+                >
+                  Ver mis pedidos
+                </StyledButtonBar>
+              </Box>
+            </>
+          )}
+
+          {session?.message !== "Ok" ? (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
               onClick={() => {
                 navigate("/login");
               }}
-              color="inherit"
+              sx={{ mr: 2 }}
             >
-              Registrate o inicia sesión
-            </StyledButtonBar>
-          </Box>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={() => {
-              navigate("/login");
-            }}
-            sx={{ mr: 2 }}
-          >
-            <img src={login2x} className="h-6" alt="oldWavePerfil" />
-          </IconButton>
+              <img src={login2x} className="h-6" alt="oldWavePerfil" />
+            </IconButton>
+          ) : (
+            <Box sx={{ display: { md: "block", xs: "none" } }}>
+              <StyledButtonBar
+                onClick={() => {
+                  setSession({});
+                  localStorage.removeItem("sessionData");
+                }}
+                color="inherit"
+              >
+                Log out
+              </StyledButtonBar>
+            </Box>
+          )}
           <IconButton
             size="large"
             edge="start"

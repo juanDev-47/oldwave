@@ -17,9 +17,12 @@ import "./login.css";
 import { loginToSend } from "./services/loginServices.ts";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+// @ts-ignore
+import { useContextProvider } from "../../context/contextProvider.tsx";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setSession, session } = useContextProvider();
   const [email, setEmail] = React.useState({
     username: "",
     password: "",
@@ -34,12 +37,13 @@ const Login = () => {
     };
     const dataLogin = loginToSend(DTO);
     dataLogin.then((res) => {
-      if (res.message === 'Ok') {
-        swal("Bienvenido", "Has iniciado sesión correctamente", "success");
+      setSession(res);
+      if (res.message === "Ok") {
+        swal(`Bienvenido `, "Has iniciado sesión correctamente", "success");
         navigate("/home");
       } else {
         swal("Error", "Usuario o contraseña incorrectos", "error");
-        navigate("/home");
+        navigate("/login");
       }
     });
   };
