@@ -1,4 +1,4 @@
-import { Box, Button, Container, Link, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import React from "react";
 // @ts-ignore
 import bglogin from "../../assets/icons/bglogin.png";
@@ -13,14 +13,38 @@ import ola2 from "../../assets/icons/ola2.png";
 // @ts-ignore
 import oldwaveicon from "../../assets/logo/oldwave-logo-vertical.png";
 import "./login.css";
+// @ts-ignore
+import { loginToSend } from "./services/loginServices.ts";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+// @ts-ignore
+import { useContextProvider } from "../../context/contextProvider.tsx";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { setSession, session } = useContextProvider();
+  const [email, setEmail] = React.useState({
+    username: "",
+    password: "",
+  });
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
+    const DTO = {
+      userName: data.get("email"),
       password: data.get("password"),
+    };
+    const dataLogin = loginToSend(DTO);
+    dataLogin.then((res) => {
+      setSession(res);
+      if (res.message === "Ok") {
+        swal(`Bienvenido ${session?.user?.userName} `, "Has iniciado sesión correctamente", "success");
+        navigate("/home");
+      } else {
+        swal("Error", "Usuario o contraseña incorrectos", "error");
+        navigate("/login");
+      }
     });
   };
 
@@ -69,7 +93,7 @@ const Login = () => {
           backgroundColor: { md: "white" },
         }}
       >
-        <Link href="/">
+        <Link to={"/"}>
           <Box
             component="img"
             sx={{
@@ -82,6 +106,7 @@ const Login = () => {
             alt="OldWave"
           />
         </Link>
+
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box
@@ -102,6 +127,7 @@ const Login = () => {
               type="email"
               margin="normal"
               required
+              onChange={(e) => setEmail({ ...email, username: e.target.value })}
               fullWidth
               id="email"
               name="email"
@@ -125,19 +151,22 @@ const Login = () => {
               margin="normal"
               required
               fullWidth
+              onChange={(e) => setEmail({ ...email, password: e.target.value })}
               name="password"
               type="password"
               id="password"
             />
           </Box>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Ingresar
-          </Button>
+          {email.username && email.password ? (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Ingresar
+            </Button>
+          ) : null}
         </Box>
       </Box>
       <Box

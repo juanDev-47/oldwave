@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useContextProvider } from "../../../../context/contextProvider.tsx";
 // @ts-ignore
 import { sendCartInfo } from "./cartServices.ts";
+import swal from "sweetalert";
 
 function useCart(product) {
-  const { cart, setCart } = useContextProvider();
+  const { cart, setCart, session, setSession } = useContextProvider();
 
   useEffect(() => {
     try {
@@ -66,38 +67,49 @@ function useCart(product) {
   };
 
   const buildDTO = () => {
-    const dto: any = {
-      orderItems: [],
-    };
-    let total = 0;
-    cart.forEach((item) => {
-      total += item.cantidad * item.discount;
-      dto.orderItems.push({
-        productName: item.name,
-        price: item.price,
-        discount: item.discount,
-        quantity: item.cantidad,
-        total: item.discount * item.cantidad,
-        imageName: item.images[0].url,
-  
+    try {
+      const dto: any = {
+        orderItems: [],
+      };
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.cantidad * item.discount;
+        dto.orderItems.push({
+          productName: item.name,
+          price: item.price,
+          discount: item.discount,
+          quantity: item.cantidad,
+          total: item.discount * item.cantidad,
+          imageName: item.images[0].url,
+        });
       });
-    });
-    dto.total = total;
-    dto.address = "Calle 1 # 2 - 3";
-    dto.userId = 1;
-    
-    const res = sendCartInfo(dto);
-    processResponse(res);
+      dto.total = total;
+      dto.address = session.user.address;
+      dto.userId = session.user.id;
 
-  };
-
-  const processResponse = (res) => {
-    console.log("response from service: ", res);
-    if(res.status === '405') {
-      alert("No se pudo procesar la orden");
-    } else {
-      alert("Orden procesada con éxito");
-      clearCart();
+      const res = sendCartInfo(dto);
+      res.then((res) => {
+        if (res.status === 200) {
+          swal(
+            "Compra realizada con exito",
+            "Se ha enviado correctamente!",
+            "success"
+          );
+          clearCart();
+        } else {
+          swal(
+            "Error al realizar la compra",
+            "Se ha presentado un error en el envio, intente nuevamente!",
+            "error"
+          );
+        }
+      });
+    } catch (error) {
+      swal(
+        "Error al realizar la compra",
+        "Debe iniciar sesion para realizar la compra!",
+        "error"
+      );
     }
   };
 

@@ -16,11 +16,7 @@ import { useContextProvider } from "../../context/contextProvider.tsx";
 // @ts-ignore
 import Sales from "./components/Sales.tsx";
 // @ts-ignore
-import {
-  getAllProducts,
-  getProductByCategory,
-  getCurrentProducts,
-} from "./services/services.ts";
+import { getAllProducts, getProductByCategory, getCurrentProducts,} from "./services/services.ts";
 // @ts-ignore
 import ProductList from "./components/ProductList.tsx";
 import { useLocation } from "react-router-dom";
@@ -28,7 +24,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Box, Typography } from "@mui/material";
 
 const Home = () => {
-  const { search, category } = useContextProvider();
+  const { search, category} = useContextProvider();
 
   const [allDataResults, setAllDataResults] = useState([]);
   const [allDataCurrent, setAllDataCurrent] = useState([]);
@@ -47,11 +43,11 @@ const Home = () => {
   const routePath = useLocation();
   const onTop = () => {
     window.scrollTo(0, 0);
-  }
+  };
   // start on top when change route
-  onTop()
+  onTop();
   useEffect(() => {
-    onTop()
+    onTop();
   }, [routePath]);
 
   // function for get current products
