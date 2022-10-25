@@ -14,6 +14,8 @@ import Login from "../pages/login/Login.tsx";
 import Product from "../pages/product/Product.tsx";
 // @ts-ignore
 import { oldwaveTheme } from "../themes/oldwaveTheme.tsx";
+// @ts-ignore
+import Order from "../pages/order/Order.tsx";
 
 const { PUBLIC_URL } = process.env;
 
@@ -26,6 +28,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/product/:name" element={<Product />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Home />} />
+          <Route path="/order" element={<Order />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

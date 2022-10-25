@@ -93,7 +93,7 @@ export default function Navbar() {
               <Box sx={{ display: { md: "block", xs: "none" } }}>
                 <StyledButtonBar
                   onClick={() => {
-                    navigate("/");
+                    navigate("/order");
                   }}
                   color="inherit"
                 >

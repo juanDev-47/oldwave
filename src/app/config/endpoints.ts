@@ -5,5 +5,6 @@ export const endpoints = {
     "current": "/api/Products/current",
     "cart": "/api/Order",
     "login": "/api/Auth",
+    "order": "/api/order/user",
   }
 }
