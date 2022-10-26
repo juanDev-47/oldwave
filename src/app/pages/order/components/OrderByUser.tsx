@@ -1,4 +1,5 @@
 import { Grid, Typography, Box, styled } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
 import React from "react";
 
 const StyledTypography = styled(Typography)`
@@ -25,6 +26,8 @@ const OrderByUser = ({ orders }) => {
       <Grid item xs={12} sx={{ my: 10 }}>
         <StyledTypography variant="h1">Mis pedidos</StyledTypography>
       </Grid>
+      {orders.length > 0 ? (
+
       <Grid container xs={12} md={10} sx={{margin: '0 auto'}}>
         {orders.map((order) => (
           <>
@@ -53,6 +56,11 @@ const OrderByUser = ({ orders }) => {
           </>
         ))}
       </Grid>
+      ) : (
+        <Box sx={{ margin: 8 }} width="100%" textAlign="center">
+          <CircularProgress />
+        </Box>
+      )}
     </Grid>
   );
 };
