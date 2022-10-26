@@ -22,7 +22,6 @@ const Order = () => {
     const dataLogin = GetOrders(token, email);
     dataLogin.then((res) => {
       if (res) {
-        console.log(res.data);
         setOrders(res);
       } else {
         navigate("/");
