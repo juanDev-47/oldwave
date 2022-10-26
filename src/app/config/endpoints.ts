@@ -3,7 +3,7 @@ export const endpoints = {
     "list": "/api/products",
     "category": "/api/products/",
     "current": "/api/products/current",
-    "cart": "/api/Order",
+    "cart": "/api/order",
     "login": "/api/auth",
     "order": "/api/order/user",
   }

@@ -87,7 +87,7 @@ function useCart(product) {
       dto.address = session.user.address;
       dto.userId = session.user.id;
 
-      const res = sendCartInfo(dto);
+      const res = sendCartInfo(dto, session.token);
       res.then((res) => {
         if (res.status === 200) {
           swal(
