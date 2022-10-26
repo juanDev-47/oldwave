@@ -37,7 +37,6 @@ const Login = () => {
     };
     const dataLogin = loginToSend(DTO);
     dataLogin.then((res) => {
-      console.log(res);
       if (res.message === "Ok") {
         setSession(res);
         swal(`Bienvenido ${res?.user?.userName} `, "Has iniciado sesión correctamente", "success");

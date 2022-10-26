@@ -1,6 +1,8 @@
-name: pipeline-oldwave-CD
+name: pipeline-oldwave-CI-CD
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   
@@ -10,6 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Cancel Previous Redundant Builds
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
       - uses: actions/checkout@v2
         with: 
           fetch-depth: 0
@@ -25,6 +31,7 @@ jobs:
           start: npm run start
           wait-on: http://localhost:3000 
       - name: Deploy to Heroku
+        if: ${{ github.event_name == 'push' }}
         uses: akhileshns/heroku-deploy@v3.12.12
         with: 
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}

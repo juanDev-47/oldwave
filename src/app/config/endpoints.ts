@@ -1,9 +1,10 @@
 export const endpoints = {
   "products": {
     "list": "/api/products",
-    "category": "/api/Products/",
-    "current": "/api/Products/current",
-    "cart": "/api/Order",
-    "login": "/api/Auth",
+    "category": "/api/products/",
+    "current": "/api/products/current",
+    "cart": "/api/order",
+    "login": "/api/auth",
+    "order": "/api/order/user",
   }
 }
