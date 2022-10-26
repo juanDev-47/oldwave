@@ -1,76 +1,60 @@
-import {
-  Grid,
-  Typography,
-  Box,
-  styled,
-} from "@mui/material";
+import { Grid, Typography, Box, styled } from "@mui/material";
 import React from "react";
-import { GetOrders } from "../services/orderServices";
-import swal from "sweetalert";
-// @ts-ignore
-import { useContextProvider } from "../../../context/contextProvider.tsx";
-import { useNavigate } from "react-router-dom";
 
 const StyledTypography = styled(Typography)`
-  font-size: 14px;
+  font-size: 22px;
   padding-top: 10px;
   width: 100%;
-  text-align: left;
+  font-weight: 700;
+  text-align: center;
   ${(props) => props.theme.breakpoints.up("xs")} {
-    font-size: 16px;
+    font-size: 22px;
   }
 `;
 
-
-const OrderByUser = () => {
-  const navigate = useNavigate();
-  const [token, setToken] = React.useState("");
-  const [orders, setOrders] = React.useState([]);
-
-  const { session } = useContextProvider();
-
-  React.useEffect(() => {
-    setToken(session.token);
-    const dataLogin = GetOrders(token);
-    dataLogin.then((res) => {
-      console.log(res);
-      if (res) {
-        setOrders(res);
-        swal(`respuesta`, "success");
-      } else {
-        swal(`respuesta`, "error");
-        navigate("/");
-      }
-    });
-  }, [token, session.token, navigate]);
-
-
-
+const OrderByUser = ({ orders }) => {
+  const pipe = (value => {
+    return new Intl.NumberFormat("es-CO", {
+      currency: "COP",
+      style: "currency",
+      minimumFractionDigits: 0,
+    }).format(parseInt(value));
+  })
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <StyledTypography variant="h5">
-          <Box fontWeight="fontWeightBold" fontSize="h5.fontSize">
-            Mis pedidos
-          </Box>
-        </StyledTypography>
+      <Grid item xs={12} sx={{ my: 10 }}>
+        <StyledTypography variant="h1">Mis pedidos</StyledTypography>
       </Grid>
-      <Grid item xs={12}>
-        <StyledTypography variant="h5">
-          <Box fontWeight="fontWeightBold" fontSize="h5.fontSize">
-            {orders.map((order) => (
-              <div key={order.id}>
-                <p>{order.orderId}</p>
-                <p>{order.orderItems[0].productName}</p>
-                <p>{order.orderItems[0].discount}</p>
-                <p>{order.orderItems[0].quantity}</p>
-              </div>
-            ))}
-          </Box>
-        </StyledTypography>
+      <Grid container xs={12} md={10} sx={{margin: '0 auto'}}>
+        {orders.map((order) => (
+          <>
+            <Typography variant="h6" sx={{ pt: 10, fontWeight: 600 }}>pedido numero: {order.orderId}</Typography>
+            <Grid container xs={12} sx={{border: '1px solid black' }}  key={order.orderId}>
+              {order.orderItems.map((product) => (
+                <Grid xs={12} sx={{my: 2}} container key={product.productName}>
+                  <Grid item md={2}>
+                    <Box width='100px' component='img' src={product.imageName} />
+                  </Grid>
+                  <Grid item md={2}>
+                    <Typography >{product.productName}</Typography>
+                  </Grid>
+                  <Grid item md={2}>
+                    <Typography >{pipe(product.discount)}</Typography>
+                  </Grid>
+                  <Grid item md={2}>
+                    <Typography >{product.quantity}</Typography>
+                  </Grid>                  
+                  <Grid item md={2}>
+                    <Typography >{pipe((product.quantity * product.discount))}</Typography>
+                  </Grid>                  
+                </Grid>
+              ))}
+            </Grid>
+          </>
+        ))}
       </Grid>
     </Grid>
   );
-}
+};
 
 export default OrderByUser;
