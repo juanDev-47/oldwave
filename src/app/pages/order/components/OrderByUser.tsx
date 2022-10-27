@@ -30,7 +30,7 @@ const OrderByUser = ({ orders }) => {
 
       <Grid container xs={12} md={10} sx={{margin: '0 auto'}}>
         {orders.map((order) => (
-          <Grid key={order.orderId}>
+          <Grid xs={12} key={order.orderId}>
             <Typography variant="h6" sx={{ pt: 10, fontWeight: 600 }}>pedido numero: {order.orderId}</Typography>
             <Grid container xs={12} sx={{border: '1px solid black' }}>
               {order.orderItems.map((product) => (
