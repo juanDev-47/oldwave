@@ -14,27 +14,26 @@ const Order = () => {
   const [token] = React.useState(session.token);
   const [orders, setOrders] = React.useState([]);
 
-  const getOrders = () => {
-    if (JSON.stringify(session) !== '{}') {
-      const email = {
-        email: session.user.email,
-      }
-      const dataLogin = GetOrders(token, email);
-      dataLogin.then((res) => {
-        if (res) {
-          setOrders(res);
-        } else {
-          navigate("/");
-        }
-      });
-    } else {
-      navigate("/");
-    }
-  };
-
   React.useEffect(() => {
+    const getOrders = () => {
+      if (JSON.stringify(session) !== "{}") {
+        const email = {
+          email: session.user.email,
+        };
+        const dataLogin = GetOrders(token, email);
+        dataLogin.then((res) => {
+          if (res) {
+            setOrders(res);
+          } else {
+            navigate("/");
+          }
+        });
+      } else {
+        navigate("/");
+      }
+    };
     getOrders();
-  }, [token]);
+  }, [navigate, session, token]);
   return (
     <Layout>
       <OrderByUser orders={orders} />
