@@ -122,6 +122,7 @@ export default function Navbar() {
                 onClick={() => {
                   setSession({});
                   localStorage.removeItem("sessionData");
+                  navigate("/");
                 }}
                 color="inherit"
               >
