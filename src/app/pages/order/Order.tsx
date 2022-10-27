@@ -14,19 +14,22 @@ const Order = () => {
   const [token] = React.useState(session.token);
   const [orders, setOrders] = React.useState([]);
 
-  const email = {
-    email: session.user.email,
-  };
-
   const getOrders = () => {
-    const dataLogin = GetOrders(token, email);
-    dataLogin.then((res) => {
-      if (res) {
-        setOrders(res);
-      } else {
-        navigate("/");
+    if (JSON.stringify(session) !== '{}') {
+      const email = {
+        email: session.user.email,
       }
-    });
+      const dataLogin = GetOrders(token, email);
+      dataLogin.then((res) => {
+        if (res) {
+          setOrders(res);
+        } else {
+          navigate("/");
+        }
+      });
+    } else {
+      navigate("/");
+    }
   };
 
   React.useEffect(() => {
